@@ -96,20 +96,15 @@ dropZone?.addEventListener("drop", (ev) => {
 });
 
 const tagok = [
-	"Kevin Styles",
 	"Danelson Benjamin",
-	"Demyan Zakharov",
-	"Meier Sofie",
-	"Edgar Shaw",
-	"Lisa Vaston",
-	"Windsor Benjy",
-	"Jackson Chavez",
 	"Cristobal Armenteros",
 	"Bill Ches",
-	"Jakob Logan",
-	"Marco Agustino Fernando",
 	"Nick Norton",
 	"Bryan R Black",
+	"Ellis Olivia",
+	"Gregori Gustav",
+	"Michael Brighs",
+	"Lost O Brian",
 ];
 
 interface munkács {
