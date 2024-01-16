@@ -105,6 +105,10 @@ const tagok = [
 	"Gregori Gustav",
 	"Michael Brighs",
 	"Lost O Brian",
+	"Lisa Vaston",
+	"Lola Maywurm",
+	"Tellez Eduardo",
+	"Aniko Maywurm",
 ];
 
 interface munkács {
