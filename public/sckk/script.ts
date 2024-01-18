@@ -109,6 +109,7 @@ const tagok = [
 	"Lola Maywurm",
 	"Tellez Eduardo",
 	"Aniko Maywurm",
+	"Edgar Shaw",
 ];
 
 interface munkács {
@@ -181,6 +182,8 @@ async function SCKK(logs: string[]) {
 									ev.data.fo.Összesen.emberek[ember].műszak;
 								fo.Összesen.emberek[ember].összesen +=
 									ev.data.fo.Összesen.emberek[ember].összesen;
+								fo.Összesen.emberek[ember].bműszak +=
+									ev.data.fo.Összesen.emberek[ember].bműszak;
 							} else {
 								fo.Összesen.emberek[ember] = {
 									műszak: ev.data.fo.Összesen.emberek[ember].műszak,
