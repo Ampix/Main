@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 
 import * as sckk from "./routes/sckk";
 
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 const app = express();
 
