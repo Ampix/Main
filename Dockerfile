@@ -17,4 +17,4 @@ COPY . .
 # run the app
 USER bun
 EXPOSE 8080
-ENTRYPOINT [ "bun", "start"]
+ENTRYPOINT [ "bun", "dev"]
