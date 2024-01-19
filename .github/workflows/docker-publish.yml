@@ -7,7 +7,7 @@ name: Docker
 
 on:
   schedule:
-    - cron: '20 20 * * *'
+    - cron: '30 23 * * *'
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
@@ -18,8 +18,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   TARGET_PLATFORMS: linux/amd64,linux/arm64
+  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
 
@@ -80,6 +80,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
