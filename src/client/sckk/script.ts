@@ -308,6 +308,7 @@ function handleReturn(nap: string) {
 			} else {
 				if (fo[nap].emberek[data].bműszak > 0) {
 					const item = document.createElement("h2");
+					item.classList.add("notamuszak");
 					item.innerText = `- ${data}: ${fo[nap].emberek[data].összesen} (${
 						fo[nap].emberek[data].műszak
 					}+${fo[nap].emberek[data].bműszak}+${

@@ -1,8 +1,10 @@
 import express from "express";
 import path from "node:path";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 
 import * as sckk from "./routes/sckk";
+import * as user from "./routes/user";
 
 const port = 8080;
 
@@ -15,6 +17,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(express.static("public"));
 
 app.use("/sckk", sckk.router);
+app.use("/user", user.router);
 
 app.get("/", (req, res) => {
 	res.sendFile(path.resolve("src/routes/index.html"));
