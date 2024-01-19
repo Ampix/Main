@@ -16,7 +16,10 @@
 		"dev:build": "run-p devbuild:*",
 		"devbuild:sckk": "bun build ./src/client/sckk/*.ts --outdir ./public/scripts/sckk --watch",
 		"build:sckk": "bun build ./src/client/sckk/*.ts --outdir ./public/scripts/sckk",
-		"start": "run-p build:* && bun run src/main.ts"
+		"build:tw": "bunx tailwindcss -i ./src/main.css -o ./public/style.css",
+		"start:build": "run-p build:*",
+		"start:prod": "bun run src/main.ts",
+		"start": "bun run start:build && bun run start:prod"
 	},
 	"dependencies": {
 		"@types/express": "^4.17.21",
