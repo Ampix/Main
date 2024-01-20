@@ -9,6 +9,8 @@ const port = 8080;
 
 const app = express();
 
+app.set("trust proxy", true);
+
 app.use(express.json());
 
 app.use(bodyParser.json({ limit: "10mb" }));
