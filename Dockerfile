@@ -7,9 +7,12 @@ WORKDIR /app
 # this will cache them and speed up future builds
 ENV PORT=8080
 
-USER root
 COPY package.json ./
 COPY bun.lockb ./
+
+RUN mkdir -p /app/public/scripts
+RUN mkdir -p /app/public/scripts/sckk
+RUN mkdir -p /app/public/scripts/matek
 
 RUN bun install
 
