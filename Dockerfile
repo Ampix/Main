@@ -7,6 +7,7 @@ WORKDIR /
 # this will cache them and speed up future builds
 ENV PORT=8080
 
+USER root
 COPY package.json ./
 COPY bun.lockb ./
 
