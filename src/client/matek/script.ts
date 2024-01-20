@@ -49,6 +49,9 @@ function prime_number_(input: number): void {
 			partial_result.push(num);
 			num /= element;
 		}
+		if (num === 1) {
+			break;
+		}
 	}
 
 	for (const cucc of output) {
