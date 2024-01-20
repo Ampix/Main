@@ -1,7 +1,6 @@
 import express from "express";
 import path from "node:path";
 import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
 
 import * as sckk from "./routes/sckk";
 import * as user from "./routes/user";
