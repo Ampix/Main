@@ -17,6 +17,7 @@
     "start": "bun run src/main.ts"
   },
   "dependencies": {
+    "@biomejs/biome": "^1.5.2",
     "@types/cookie-parser": "^1.4.6",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.5",
