@@ -10,7 +10,9 @@ ENV PORT=8080
 COPY package.json ./
 COPY bun.lockb ./
 
-RUN chown -R bun:bun .
+RUN chown -R bun:bun ./
+
+RUN chmod -R 777 ./
 
 RUN bun install
 
