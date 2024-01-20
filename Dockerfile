@@ -7,7 +7,6 @@ WORKDIR /app
 # this will cache them and speed up future builds
 ENV PORT=8080
 
-USER daemon
 COPY package.json ./
 COPY bun.lockb ./
 
@@ -16,6 +15,6 @@ RUN bun install
 COPY . .
 
 # run the app
-USER bun
+USER root
 EXPOSE 8080
 ENTRYPOINT [ "bun", "dev"]
