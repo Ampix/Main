@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import * as sckk from "./routes/sckk";
 import * as user from "./routes/user";
+import * as matek from "./routes/matek";
 
 const port = 8080;
 
@@ -18,6 +19,7 @@ app.use(express.static("public"));
 
 app.use("/sckk", sckk.router);
 app.use("/user", user.router);
+app.use("/matek", matek.router);
 
 app.get("/", (req, res) => {
 	res.sendFile(path.resolve("src/routes/index.html"));

@@ -14,6 +14,7 @@
     "dev": "concurrently \"bun run dev:main\" \"bun run dev:tw\" \"bun run dev:build\"",
     "dev:build": "concurrently \"bun run build:*\"",
     "build:sckk": "bun build ./src/client/sckk/*.ts --outdir ./public/scripts/sckk --watch",
+    "build:matek": "bun build ./src/client/matek/*.ts --outdir ./public/scripts/matek --watch",
     "start": "bun run src/main.ts"
   },
   "dependencies": {
