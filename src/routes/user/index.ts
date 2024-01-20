@@ -8,6 +8,7 @@ router.use(cookieParser(process.env.COOKIE_SECRET));
 
 router.get("/", async (req, res) => {
 	res.send(req.ip);
+	// res.sendFile(path.resolve("src/routes/user/index.html"));
 	// if (req.signedCookies.userAuthCode) {
 	// 	const cucc = await fetch(
 	// 		`https://api.ampix.cloud/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
