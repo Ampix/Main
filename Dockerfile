@@ -15,6 +15,6 @@ RUN bun install
 COPY . .
 
 # run the app
-USER bun
+USER root
 EXPOSE 8080
 ENTRYPOINT [ "bun", "dev"]

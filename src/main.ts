@@ -1,7 +1,6 @@
 import express from "express";
 import path from "node:path";
 import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
 
 import * as sckk from "./routes/sckk";
 import * as user from "./routes/user";
@@ -10,6 +9,8 @@ import * as matek from "./routes/matek";
 const port = 8080;
 
 const app = express();
+
+app.set("trust proxy", true);
 
 app.use(express.json());
 
