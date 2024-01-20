@@ -53,7 +53,6 @@ document.getElementById("prime_number_form")?.addEventListener("submit",(e) =>{
    e.preventDefault();
    const data = new FormData(e.target as HTMLFormElement);
    prime_number_(Number(Object.fromEntries(data.entries()).prime))
-
 })
 
 
