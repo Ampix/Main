@@ -34,8 +34,10 @@ function prime_number_(num:number):void{
     
     }
     output = output.filter(check_if_one);
-    document.getElementById("output").innerHTML = output.toString();
-    
+    const element = document.getElementById("output")
+    if (element) {
+    element.innerHTML = output.toString();
+    }
 }
 
 
