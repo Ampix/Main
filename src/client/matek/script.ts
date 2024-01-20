@@ -17,7 +17,16 @@ function check_if_one(num: number): boolean {
 }
 
 function prime_number_(input: number): void {
-	if (input <= 1) return;
+	const bal_oldal = document.getElementById("bal_oldal");
+	const jobb_oldal = document.getElementById("jobb_oldal");
+	const summarized = document.getElementById("summarized");
+
+	if (input <= 1 && bal_oldal && jobb_oldal && summarized) {
+		bal_oldal.innerHTML = "";
+		jobb_oldal.innerHTML = "";
+		summarized.innerHTML = "";
+		return;
+	}
 
 	const result: number[][] = [[], []];
 	let num = input;
@@ -54,10 +63,6 @@ function prime_number_(input: number): void {
 
 	partial_result.push(1);
 	output = output.filter(check_if_one);
-
-	const bal_oldal = document.getElementById("bal_oldal");
-	const jobb_oldal = document.getElementById("jobb_oldal");
-	const summarized = document.getElementById("summarized");
 
 	if (bal_oldal && jobb_oldal && summarized) {
 		bal_oldal.innerHTML = "";
