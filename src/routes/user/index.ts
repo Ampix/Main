@@ -1,30 +1,49 @@
 import express from "express";
 import path from "node:path";
-import cookieParser from "cookie-parser";
 
 export const router = express.Router();
 
-router.use(cookieParser(process.env.COOKIE_SECRET));
-
 router.get("/", async (req, res) => {
-	res.send(req.ip);
-	// res.sendFile(path.resolve("src/routes/user/index.html"));
-	// if (req.signedCookies.userAuthCode) {
-	// 	const cucc = await fetch(
-	// 		`https://api.ampix.cloud/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
-	// 	);
-	// 	if (cucc) {
-	// 		console.log(cucc);
-	// 	}
-	// } else {
-	// 	res.send("nem csa");
-	// }
+	if (req.signedCookies.userAuthCode) {
+		const cucc = await fetch(
+			`https://api.ampix.cloud/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
+		);
+		if (cucc) {
+			console.log(cucc);
+		}
+	} else {
+		res.redirect(303, "/user/login");
+	}
 });
 
-router.get("/setcookie/:cookie/:forthis", (req, res) => {
-	res.cookie(req.params.cookie, req.params.forthis, {
-		maxAge: 200000,
-		signed: true,
-	});
-	res.redirect("/user");
+router.get("/login", async (req, res) => {
+	res.sendFile(path.resolve("src/routes/user/login.html"));
+});
+
+router.get("/login/code", async (req, res) => {
+	res.sendFile(path.resolve("src/routes/user/code.html"));
+});
+
+router.post("/post-login", async (req, res) => {
+	const body = await req.body;
+	if (body?.email) {
+		const cucc = await fetch("https://api.ampix.cloud/users/login/mail", {
+			method: "POST",
+			cache: "no-cache",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				email: body.email,
+			}),
+		});
+		console.log(cucc);
+		if (cucc.status === 200) {
+			res.redirect(303, "/user/login/code");
+		} else {
+			res.sendStatus(cucc.status);
+		}
+	} else {
+		res.redirect(303, "/user/login");
+	}
 });
