@@ -110,6 +110,9 @@ const tagok = [
 	"Tellez Eduardo",
 	"Aniko Maywurm",
 	"Edgar Shaw",
+	"Enrique Gallegos",
+	"Radoje Bjelica",
+	"Branislav Schnepp",
 ];
 
 interface munkács {
