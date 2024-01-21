@@ -17,6 +17,7 @@ function check_if_one(num: number): boolean {
 }
 
 function prime_number_(input: number): void {
+	const start = performance.now();
 	const bal_oldal = document.getElementById("bal_oldal");
 	const jobb_oldal = document.getElementById("jobb_oldal");
 	const summarized = document.getElementById("summarized");
@@ -33,27 +34,36 @@ function prime_number_(input: number): void {
 	let prime_numbers_under_num = [];
 	let output = [];
 	const partial_result = [];
-
-	for (let index = 2; index < num / 2 + 1; index++) {
-		prime_numbers_under_num.push(prime_numbers(index));
+	let need_to = true;
+	if (prime_numbers(num) === num) {
+		output.push(num);
+		partial_result.push(num);
+		need_to = false;
 	}
-
-	prime_numbers_under_num.push(prime_numbers(num));
-	prime_numbers_under_num = prime_numbers_under_num.filter(check_if_one);
-
-	for (let index = 0; index < prime_numbers_under_num.length; index++) {
-		const element = prime_numbers_under_num[index];
-
-		while (num % element === 0) {
-			output.push(element);
-			partial_result.push(num);
-			num /= element;
+	if (need_to) {
+		for (let index = 2; index < num / 2 + 1; index++) {
+			prime_numbers_under_num.push(prime_numbers(index));
 		}
-		if (num === 1) {
-			break;
+
+		prime_numbers_under_num.push(prime_numbers(num));
+		prime_numbers_under_num = prime_numbers_under_num.filter(check_if_one);
+
+		for (let index = 0; index < prime_numbers_under_num.length; index++) {
+			const element = prime_numbers_under_num[index];
+
+			while (num % element === 0) {
+				output.push(element);
+				partial_result.push(num);
+				num /= element;
+				if (num === 1) {
+					break;
+				}
+			}
+			if (num === 1) {
+				break;
+			}
 		}
 	}
-
 	for (const cucc of output) {
 		if (result[0].includes(cucc)) {
 			const index = result[0].indexOf(cucc);
@@ -65,6 +75,7 @@ function prime_number_(input: number): void {
 	}
 
 	partial_result.push(1);
+
 	output = output.filter(check_if_one);
 
 	if (bal_oldal && jobb_oldal && summarized) {
@@ -113,6 +124,8 @@ function prime_number_(input: number): void {
 			}
 		}
 	}
+	const end = performance.now();
+	console.log(`Execution time: ${end - start} ms`);
 }
 
 document
