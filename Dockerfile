@@ -5,8 +5,6 @@ WORKDIR /app
 
 # install dependencies into temp directory
 # this will cache them and speed up future builds
-ENV PORT=8080
-
 COPY package.json ./
 COPY bun.lockb ./
 
