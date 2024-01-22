@@ -35,10 +35,16 @@ function prime_number_(input: number): void {
 	let output = [];
 	const partial_result = [];
 	let need_to = true;
+	const osztók: number[] = [];
+	let number_of_oszók = 1;
+
 	if (prime_numbers(num) === num) {
 		output.push(num);
 		partial_result.push(num);
 		need_to = false;
+		osztók.push(1);
+		osztók.push(num);
+		number_of_oszók += 1;
 	}
 	if (need_to) {
 		for (let index = 2; index < num / 2 + 1; index++) {
@@ -55,15 +61,14 @@ function prime_number_(input: number): void {
 				output.push(element);
 				partial_result.push(num);
 				num /= element;
-				if (num === 1) {
-					break;
-				}
 			}
 			if (num === 1) {
 				break;
 			}
 		}
 	}
+
+	output = output.filter(check_if_one);
 	for (const cucc of output) {
 		if (result[0].includes(cucc)) {
 			const index = result[0].indexOf(cucc);
@@ -74,9 +79,50 @@ function prime_number_(input: number): void {
 		}
 	}
 
-	partial_result.push(1);
+	for (const element of result[1]) {
+		number_of_oszók *= element + 1;
+	}
+	let indexes: number[] = [];
 
-	output = output.filter(check_if_one);
+	for (let i = 0; i < result[0].length; i++) {
+		indexes.push(0);
+	}
+
+	for (let index = 0; index < number_of_oszók/indexes.length; index++) {
+		
+		let osztó = 1;
+		for (let i = indexes.length-1 ;  i>=0 ; i--) {
+			if (indexes === result[1]) {
+				break;
+			}
+			console.log(i)
+			osztó *= result[0][i] ** indexes[i];
+
+			osztók.push(osztó);
+			console.log(indexes);
+			
+			
+			if (i!== indexes.length-1	 && indexes.slice(i+1,indexes.length).toString() === result[1].slice(i+1,result[1].length).toString() &&indexes.slice(i,indexes.length).toString() !== result[1].slice(i,result[1].length).toString()) {
+				console.log("siker")
+				indexes[i]++;
+				for (let j = 0; j < indexes.length; j++) {
+					if (j>i){
+						indexes[j] = 0
+					}
+			}
+		}	
+
+			if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
+				indexes[i]++;
+			}
+
+			
+		}
+	}
+
+	console.log(osztók);
+	// console.log(result);
+	partial_result.push(1);
 
 	if (bal_oldal && jobb_oldal && summarized) {
 		bal_oldal.innerHTML = "";
@@ -127,7 +173,8 @@ function prime_number_(input: number): void {
 	const end = performance.now();
 	console.log(`Execution time: ${end - start} ms`);
 }
-
+console.log([1,1,1].toString())
+console.log([1,1,1].toString() === [1,1,1].toString())
 document
 	.getElementById("prime_number_form")
 	?.addEventListener("submit", (e) => {
