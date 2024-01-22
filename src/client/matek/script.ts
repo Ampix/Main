@@ -82,44 +82,42 @@ function prime_number_(input: number): void {
 	for (const element of result[1]) {
 		number_of_oszók *= element + 1;
 	}
-	let indexes: number[] = [];
+	const indexes: number[] = [];
 
 	for (let i = 0; i < result[0].length; i++) {
 		indexes.push(0);
 	}
-
-	for (let index = 0; index < number_of_oszók/indexes.length; index++) {
-		
-		let osztó = 1;
-		for (let i = indexes.length-1 ;  i>=0 ; i--) {
-			if (indexes === result[1]) {
-				break;
-			}
-			console.log(i)
-			osztó *= result[0][i] ** indexes[i];
-
-			osztók.push(osztó);
+	const more_indexes = [];
+	for (let index = 0; index < number_of_oszók; index++) {
+		if (indexes.toString() === result[1].toString()) {
+			break;
+		}
+		for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
+			more_indexes.push(indexes);
 			console.log(indexes);
-			
-			
-			if (i!== indexes.length-1	 && indexes.slice(i+1,indexes.length).toString() === result[1].slice(i+1,result[1].length).toString() &&indexes.slice(i,indexes.length).toString() !== result[1].slice(i,result[1].length).toString()) {
-				console.log("siker")
+
+			if (
+				i !== indexes.length - 1 &&
+				indexes.slice(i + 1, indexes.length).toString() ===
+					result[1].slice(i + 1, result[1].length).toString() &&
+				indexes.slice(i, indexes.length).toString() !==
+					result[1].slice(i, result[1].length).toString()
+			) {
 				indexes[i]++;
 				for (let j = 0; j < indexes.length; j++) {
-					if (j>i){
-						indexes[j] = 0
+					if (j > i) {
+						indexes[j] = 0;
 					}
+				}
+				i--;
 			}
-		}	
 
 			if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
 				indexes[i]++;
 			}
-
-			
 		}
 	}
-
+	console.log(more_indexes);
 	console.log(osztók);
 	// console.log(result);
 	partial_result.push(1);
@@ -173,8 +171,7 @@ function prime_number_(input: number): void {
 	const end = performance.now();
 	console.log(`Execution time: ${end - start} ms`);
 }
-console.log([1,1,1].toString())
-console.log([1,1,1].toString() === [1,1,1].toString())
+
 document
 	.getElementById("prime_number_form")
 	?.addEventListener("submit", (e) => {
