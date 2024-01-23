@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ampix Bejelentkezés</title>
         <link rel="stylesheet" href="/style.css" />
-        <meta name="description" content="Ampix Fiók">
+        <meta name="description" content="Ampix Fiók" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <script type="module" src="/scripts/user/script.js" defer></script>
     </head>
@@ -15,10 +15,13 @@
                 <h1 class="font-semibold text-3xl">Bejelentkezés</h1>
                 <h2>Az email címedre el lett küldve a kód!</h2>
                 <form action="/user/post-login-code" method="post">
-                    <input type="number" name="code" id="login-code" required>
+                    <input type="number" name="code" id="login-code" required />
                     <button type="submit">Kód használata</button>
                 </form>
-                <h2>Nem kaptál kódot? <a href="/user/login">Próbáld mégegyszer!</a></h2>
+                <h2>
+                    Nem kaptál kódot?
+                    <a href="/user/login">Próbáld mégegyszer!</a>
+                </h2>
             </div>
         </div>
     </body>
