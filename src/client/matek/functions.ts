@@ -20,7 +20,6 @@ export function array_in_array(
 	keresendo: number[],
 	benne: number[][],
 ): boolean {
-	// console.log("element", element);
 	for (const element of benne) {
 		if (element.toString() === keresendo.toString()) {
 			return false;
