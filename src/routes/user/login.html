@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ampix Bejelentkezés</title>
         <link rel="stylesheet" href="/style.css" />
-        <meta name="description" content="Ampix Fiók">
+        <meta name="description" content="Ampix Fiók" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <script type="module" src="/scripts/user/script.js" defer></script>
     </head>
@@ -14,10 +14,17 @@
             <div class="m-auto text-center">
                 <h1 class="font-semibold text-3xl">Bejelentkezés</h1>
                 <form action="/user/post-login" method="post">
-                    <input type="email" name="email" id="login-email" required>
+                    <input
+                        type="email"
+                        name="email"
+                        id="login-email"
+                        required
+                    />
                     <button type="submit">Bejelentkezés</button>
                 </form>
-                <h2>Nincs még fiókod? <a href="/user/register">Regisztrálj!</a></h2>
+                <h2>
+                    Nincs még fiókod? <a href="/user/register">Regisztrálj!</a>
+                </h2>
             </div>
         </div>
     </body>
