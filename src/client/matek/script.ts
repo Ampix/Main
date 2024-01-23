@@ -87,13 +87,14 @@ function prime_number_(input: number): void {
 	for (let i = 0; i < result[0].length; i++) {
 		indexes.push(0);
 	}
-	const more_indexes = [];
+	const more_indexes: number[][] = [];
 	for (let index = 0; index < number_of_oszók; index++) {
-		if (indexes.toString() === result[1].toString()) {
-			break;
-		}
 		for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
-			more_indexes.push(indexes);
+			const temp = indexes.slice(0, indexes.length);
+			if (!more_indexes.includes(temp)) {
+				more_indexes.push(temp);
+			}
+
 			console.log(indexes);
 
 			if (
@@ -109,12 +110,14 @@ function prime_number_(input: number): void {
 						indexes[j] = 0;
 					}
 				}
-				i--;
 			}
 
 			if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
 				indexes[i]++;
 			}
+		}
+		if (indexes.toString() === result[1].toString()) {
+			break;
 		}
 	}
 	console.log(more_indexes);
