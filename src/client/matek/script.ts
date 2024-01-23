@@ -7,117 +7,117 @@ import {
 } from "./functions.js";
 
 function prime_number_(input: number): void {
+	if (input <= 1) return;
+
 	const start = performance.now();
 	const bal_oldal = document.getElementById("bal_oldal");
 	const jobb_oldal = document.getElementById("jobb_oldal");
 	const summarized = document.getElementById("summarized");
+	const osztócím = document.getElementById("osztó");
+	const osztók_div = document.getElementById("osztók");
 
-	if (input <= 1 && bal_oldal && jobb_oldal && summarized) {
-		bal_oldal.innerHTML = "";
-		jobb_oldal.innerHTML = "";
-		summarized.innerHTML = "";
-		return;
-	}
+	if (bal_oldal && jobb_oldal && summarized && osztócím && osztók_div) {
+		const result: number[][] = [[], []];
+		let num = input;
+		let prime_numbers_under_num = [];
+		let output = [];
+		const partial_result = [];
+		let need_to = true;
+		let osztók: number[] = [];
+		let number_of_oszók = 1;
 
-	const result: number[][] = [[], []];
-	let num = input;
-	let prime_numbers_under_num = [];
-	let output = [];
-	const partial_result = [];
-	let need_to = true;
-	let osztók: number[] = [];
-	let number_of_oszók = 1;
-
-	if (prime_numbers(num) === num) {
-		output.push(num);
-		partial_result.push(num);
-		need_to = false;
-		osztók.push(1);
-		osztók.push(num);
-		number_of_oszók += 1;
-	}
-	if (need_to) {
-		for (let index = 2; index < num / 2 + 1; index++) {
-			prime_numbers_under_num.push(prime_numbers(index));
+		if (prime_numbers(num) === num) {
+			output.push(num);
+			partial_result.push(num);
+			need_to = false;
+			osztók.push(1);
+			osztók.push(num);
+			number_of_oszók += 1;
 		}
-
-		prime_numbers_under_num.push(prime_numbers(num));
-		prime_numbers_under_num = prime_numbers_under_num.filter(check_if_one);
-
-		for (let index = 0; index < prime_numbers_under_num.length; index++) {
-			const element = prime_numbers_under_num[index];
-
-			while (num % element === 0) {
-				output.push(element);
-				partial_result.push(num);
-				num /= element;
+		if (need_to) {
+			for (let index = 2; index < num / 2 + 1; index++) {
+				prime_numbers_under_num.push(prime_numbers(index));
 			}
-			if (num === 1) {
-				break;
-			}
-		}
-	}
 
-	output = output.filter(check_if_one);
-	for (const cucc of output) {
-		if (result[0].includes(cucc)) {
-			const index = result[0].indexOf(cucc);
-			result[1][index]++;
-		} else {
-			result[1].push(1);
-			result[0].push(cucc);
-		}
-	}
-	if (need_to) {
-		for (const element of result[1]) {
-			number_of_oszók *= element + 1;
-		}
-		const indexes: number[] = [];
+			prime_numbers_under_num.push(prime_numbers(num));
+			prime_numbers_under_num = prime_numbers_under_num.filter(check_if_one);
 
-		for (let i = 0; i < result[0].length; i++) {
-			indexes.push(0);
-		}
-		const more_indexes: number[][] = [];
-		for (let index = 0; index < number_of_oszók; index++) {
-			for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
-				const temp = indexes.slice(0, indexes.length);
+			for (let index = 0; index < prime_numbers_under_num.length; index++) {
+				const element = prime_numbers_under_num[index];
 
-				if (array_in_array(temp, more_indexes)) {
-					more_indexes.push(temp);
+				while (num % element === 0) {
+					output.push(element);
+					partial_result.push(num);
+					num /= element;
 				}
+				if (num === 1) {
+					break;
+				}
+			}
+		}
 
-				if (
-					i !== indexes.length - 1 &&
-					indexes.slice(i + 1, indexes.length).toString() ===
-						result[1].slice(i + 1, result[1].length).toString() &&
-					indexes.slice(i, indexes.length).toString() !==
-						result[1].slice(i, result[1].length).toString()
-				) {
-					indexes[i]++;
-					for (let j = 0; j < indexes.length; j++) {
-						if (j > i) {
-							indexes[j] = 0;
+		output = output.filter(check_if_one);
+		for (const cucc of output) {
+			if (result[0].includes(cucc)) {
+				const index = result[0].indexOf(cucc);
+				result[1][index]++;
+			} else {
+				result[1].push(1);
+				result[0].push(cucc);
+			}
+		}
+		if (need_to) {
+			for (const element of result[1]) {
+				number_of_oszók *= element + 1;
+			}
+			const indexes: number[] = [];
+
+			for (let i = 0; i < result[0].length; i++) {
+				indexes.push(0);
+			}
+			const more_indexes: number[][] = [];
+			for (let index = 0; index < number_of_oszók; index++) {
+				for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
+					const temp = indexes.slice(0, indexes.length);
+
+					if (array_in_array(temp, more_indexes)) {
+						more_indexes.push(temp);
+					}
+
+					if (
+						i !== indexes.length - 1 &&
+						indexes.slice(i + 1, indexes.length).toString() ===
+							result[1].slice(i + 1, result[1].length).toString() &&
+						indexes.slice(i, indexes.length).toString() !==
+							result[1].slice(i, result[1].length).toString()
+					) {
+						indexes[i]++;
+						for (let j = 0; j < indexes.length; j++) {
+							if (j > i) {
+								indexes[j] = 0;
+							}
 						}
 					}
-				}
 
-				if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
-					indexes[i]++;
+					if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
+						indexes[i]++;
+					}
+				}
+				if (indexes.toString() === result[1].toString()) {
+					break;
 				}
 			}
-			if (indexes.toString() === result[1].toString()) {
-				break;
-			}
+			osztók = more_indexes.map((item) => osztósítás(item, result[0]));
+			osztók = quickSort(osztók);
 		}
-		osztók = more_indexes.map((item) => osztósítás(item, result[0]));
-		osztók = quickSort(osztók);
-	}
-	partial_result.push(1);
-	console.log(osztók);
-	if (bal_oldal && jobb_oldal && summarized) {
+
+		partial_result.push(1);
+		console.log(osztók);
+
 		bal_oldal.innerHTML = "";
 		jobb_oldal.innerHTML = "";
 		summarized.innerHTML = "";
+		osztók_div.innerHTML = "";
 
 		for (let i = 0; i < partial_result.length; i++) {
 			const element = document.createElement("h2");
@@ -158,6 +158,14 @@ function prime_number_(input: number): void {
 				szorzócska.classList.add("mx-4", "text-xl", "font-bold");
 				summarized.appendChild(szorzócska);
 			}
+		}
+
+		osztócím.innerText = `${input} számú gyárból ${number_of_oszók} osztó jött ki:`;
+
+		for (const element of osztók) {
+			const józsi = document.createElement("h3");
+			józsi.innerText = element.toString();
+			osztók_div.appendChild(józsi);
 		}
 	}
 	const end = performance.now();
