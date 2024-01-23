@@ -1,4 +1,10 @@
-import { prime_numbers, check_if_one, array_in_array } from "./functions.js";
+import {
+	prime_numbers,
+	check_if_one,
+	array_in_array,
+	osztósítás,
+	quickSort,
+} from "./functions.js";
 
 function prime_number_(input: number): void {
 	const start = performance.now();
@@ -19,7 +25,7 @@ function prime_number_(input: number): void {
 	let output = [];
 	const partial_result = [];
 	let need_to = true;
-	const osztók: number[] = [];
+	let osztók: number[] = [];
 	let number_of_oszók = 1;
 
 	if (prime_numbers(num) === num) {
@@ -62,53 +68,52 @@ function prime_number_(input: number): void {
 			result[0].push(cucc);
 		}
 	}
+	if (need_to) {
+		for (const element of result[1]) {
+			number_of_oszók *= element + 1;
+		}
+		const indexes: number[] = [];
 
-	for (const element of result[1]) {
-		number_of_oszók *= element + 1;
-	}
-	const indexes: number[] = [];
+		for (let i = 0; i < result[0].length; i++) {
+			indexes.push(0);
+		}
+		const more_indexes: number[][] = [];
+		for (let index = 0; index < number_of_oszók; index++) {
+			for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
+				const temp = indexes.slice(0, indexes.length);
 
-	for (let i = 0; i < result[0].length; i++) {
-		indexes.push(0);
-	}
-	const more_indexes: number[][] = [];
-	for (let index = 0; index < number_of_oszók; index++) {
-		for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
-			console.log(indexes);
+				if (array_in_array(temp, more_indexes)) {
+					more_indexes.push(temp);
+				}
 
-			const temp = indexes.slice(0, indexes.length);
-			if (array_in_array(temp, more_indexes)) {
-				more_indexes.push(temp);
-			}
-
-			if (
-				i !== indexes.length - 1 &&
-				indexes.slice(i + 1, indexes.length).toString() ===
-					result[1].slice(i + 1, result[1].length).toString() &&
-				indexes.slice(i, indexes.length).toString() !==
-					result[1].slice(i, result[1].length).toString()
-			) {
-				indexes[i]++;
-				for (let j = 0; j < indexes.length; j++) {
-					if (j > i) {
-						indexes[j] = 0;
+				if (
+					i !== indexes.length - 1 &&
+					indexes.slice(i + 1, indexes.length).toString() ===
+						result[1].slice(i + 1, result[1].length).toString() &&
+					indexes.slice(i, indexes.length).toString() !==
+						result[1].slice(i, result[1].length).toString()
+				) {
+					indexes[i]++;
+					for (let j = 0; j < indexes.length; j++) {
+						if (j > i) {
+							indexes[j] = 0;
+						}
 					}
 				}
-			}
 
-			if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
-				indexes[i]++;
+				if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
+					indexes[i]++;
+				}
+			}
+			if (indexes.toString() === result[1].toString()) {
+				break;
 			}
 		}
-		if (indexes.toString() === result[1].toString()) {
-			break;
-		}
+		osztók = more_indexes.map((item) => osztósítás(item, result[0]));
+		osztók = quickSort(osztók);
 	}
-	console.log(more_indexes);
-	console.log(osztók);
-	// console.log(result);
 	partial_result.push(1);
-
+	console.log(osztók);
 	if (bal_oldal && jobb_oldal && summarized) {
 		bal_oldal.innerHTML = "";
 		jobb_oldal.innerHTML = "";
