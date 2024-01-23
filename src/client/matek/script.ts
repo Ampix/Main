@@ -1,20 +1,4 @@
-function prime_numbers(num: number): number {
-	let counter = 0;
-	for (let index = 2; index <= Math.sqrt(num); index++) {
-		if (num % index === 0) {
-			counter++;
-		}
-	}
-	if (counter === 0) {
-		return num;
-	}
-
-	return 1;
-}
-
-function check_if_one(num: number): boolean {
-	return num !== 1;
-}
+import { prime_numbers, check_if_one, array_in_array } from "./functions.js";
 
 function prime_number_(input: number): void {
 	const start = performance.now();
@@ -90,12 +74,12 @@ function prime_number_(input: number): void {
 	const more_indexes: number[][] = [];
 	for (let index = 0; index < number_of_oszók; index++) {
 		for (let i = indexes.length - 1; indexes.length > i && i >= 0; i--) {
+			console.log(indexes);
+
 			const temp = indexes.slice(0, indexes.length);
-			if (!more_indexes.includes(temp)) {
+			if (array_in_array(temp, more_indexes)) {
 				more_indexes.push(temp);
 			}
-
-			console.log(indexes);
 
 			if (
 				i !== indexes.length - 1 &&
