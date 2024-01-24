@@ -16,6 +16,9 @@ function prime_number_(input: number): void {
 	const osztócím = document.getElementById("osztó");
 	const osztók_div = document.getElementById("osztók");
 
+	document.getElementById("oszlopok")?.classList.remove("hidden");
+	document.getElementById("oszlopok")?.classList.add("grid");
+
 	if (bal_oldal && jobb_oldal && summarized && osztócím && osztók_div) {
 		const result: number[][] = [[], []];
 		let num = input;

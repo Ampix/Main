@@ -8,50 +8,51 @@
         <title>Ampix Matek (Gyári munka)</title>
         <link rel="stylesheet" href="/style.css" />
     </head>
-    <body class="bg-slate-700 text-white font-mono">
+    <body class="bg-green-700 text-white font-mono">
         <div class="text-center items-center justify-center">
-            <div class="bg-gray-900 py-5">
+            <div class="bg-green-500 py-5">
                 <h1 class="text-3xl mb-3 font-semibold">
                     Prímtényezős felbontás
                 </h1>
                 <form id="prime_number_form">
                     <input
-                        class="bg-slate-800 w-[20rem] text-center text-xl rounded-lg py-1 focus:bg-slate-500"
+                        class="bg-green-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-green-600"
                         type="number"
                         name="prime"
                         placeholder="Gyári munka alapanyaga"
                     />
                     <button
                         type="submit"
-                        class="bg-slate-800 px-2 py-1 rounded-lg text-xl font-bold hover:bg-slate-500"
+                        class="bg-green-400 px-2 py-1 rounded-lg text-xl font-bold hover:bg-green-600"
                     >
                         Feldolgozás
                     </button>
                 </form>
             </div>
             <div
-                class="flex justify-center items-center bg-slate-400 text-2xl"
+                class="flex justify-center items-center bg-emerald-600 text-2xl"
                 id="summarized"
             ></div>
             <div
-                class="grid sm:grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mx-0 md:mx-24 mt-0 md:mt-5"
+                id="oszlopok"
+                class="sm:grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mx-0 md:mx-24 mt-0 md:mt-5 hidden"
             >
-                <div class="bg-slate-950 p-5 rounded-lg">
+                <div class="bg-green-500 p-5 rounded-lg">
                     <div
-                        class="grid grid-cols-2 bg-yellow-300 mx-20 gap-x-1.5 text-xl"
+                        class="grid grid-cols-2 bg-emerald-300 mx-20 gap-x-1.5 text-xl"
                     >
                         <div
                             id="bal_oldal"
-                            class="bg-slate-950 text-right pr-1 text-2xl"
+                            class="bg-green-500 text-right pr-1 text-2xl"
                         ></div>
 
                         <div
                             id="jobb_oldal"
-                            class="bg-slate-950 text-left pl-1 text-2xl"
+                            class="bg-green-500 text-left pl-1 text-2xl"
                         ></div>
                     </div>
                 </div>
-                <div class="bg-slate-950 p-5 rounded-lg">
+                <div class="bg-green-500 p-5 rounded-lg">
                     <h2 id="osztó" class="text-3xl"></h2>
                     <div
                         id="osztók"
