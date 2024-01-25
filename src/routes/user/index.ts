@@ -18,6 +18,10 @@ router.get("/", async (req, res) => {
 	}
 });
 
+router.get("/api", async (req, res) => {
+	res.send(api);
+});
+
 router.get("/login", async (req, res) => {
 	res.sendFile(path.resolve("src/routes/user/login.html"));
 });
