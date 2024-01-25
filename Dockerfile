@@ -8,6 +8,8 @@ WORKDIR /app
 COPY package.json ./
 COPY bun.lockb ./
 
+ENV ADEV=true
+
 RUN bun install
 
 COPY . .
