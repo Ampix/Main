@@ -9,6 +9,10 @@ import * as vakterkep from "./routes/vakterkep";
 
 const port = 8080;
 
+const dev = true;
+
+export const api = dev ? "http://localhost:23454" : "https://api.ampix.cloud";
+
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));

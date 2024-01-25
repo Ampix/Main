@@ -1,12 +1,14 @@
 import express from "express";
 import path from "node:path";
 
+import { api } from "../../main";
+
 export const router = express.Router();
 
 router.get("/", async (req, res) => {
 	if (req.signedCookies.userAuthCode) {
 		const cucc = await fetch(
-			`https://api.ampix.cloud/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
+			`${api}/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
 		);
 		if (cucc) {
 			console.log(cucc);
@@ -27,7 +29,7 @@ router.get("/login/code", async (req, res) => {
 router.post("/post-login", async (req, res) => {
 	const body = await req.body;
 	if (body?.email) {
-		const cucc = await fetch("https://api.ampix.cloud/users/login/mail", {
+		const cucc = await fetch(`${api}/users/login/mail`, {
 			method: "POST",
 			cache: "no-cache",
 			headers: {
