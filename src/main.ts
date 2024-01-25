@@ -9,9 +9,9 @@ import * as vakterkep from "./routes/vakterkep";
 
 const port = 8080;
 
-const dev = true;
-
-export const api = dev ? "http://localhost:23454" : "https://api.ampix.cloud";
+export const api = process.env.PROD
+	? "https://api.ampix.cloud"
+	: "http://localhost:23454";
 
 const app = express();
 
