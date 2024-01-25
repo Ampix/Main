@@ -6,6 +6,7 @@ import * as sckk from "./routes/sckk";
 import * as user from "./routes/user";
 import * as matek from "./routes/matek";
 import * as vakterkep from "./routes/vakterkep";
+import * as nemet from "./routes/nemet";
 
 const port = 8080;
 
@@ -27,6 +28,7 @@ app.use("/sckk", sckk.router);
 app.use("/user", user.router);
 app.use("/matek", matek.router);
 app.use("/vakterkep", vakterkep.router);
+app.use("/nemet", nemet.router);
 
 app.get("/", (req, res) => {
 	res.sendFile(path.resolve("src/routes/index.html"));
