@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json ./
 COPY bun.lockb ./
 
-ENV ADEV=true
+ENV PROD=true
 
 RUN bun install
 
