@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
 			`${api}/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
 		);
 		if (cucc) {
+			res.sendFile(path.resolve("src/routes/user/index.html"));
 			console.log(cucc);
 		}
 	} else {
@@ -47,5 +48,30 @@ router.post("/post-login", async (req, res) => {
 		}
 	} else {
 		res.redirect(303, "/user/login");
+	}
+});
+
+router.post("/post-code", async (req, res) => {
+	const body = await req.body;
+	if (body?.code) {
+		const cucc = await fetch(`${api}/users/login/code`, {
+			method: "POST",
+			cache: "no-cache",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				code: body.code,
+			}),
+		});
+		const mama = await cucc.text();
+		console.log(mama);
+		if (cucc.status === 200) {
+			res.redirect(303, "/user/login/done");
+		} else {
+			res.sendStatus(cucc.status);
+		}
+	} else {
+		res.redirect(303, "/user/login/code");
 	}
 });
