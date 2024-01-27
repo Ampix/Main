@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script type="module" src="/scripts/nemet/script.js" defer></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Német</title>
@@ -9,6 +10,40 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     </head>
     <body class="bg-slate-700">
-        <div id="output"></div>
+        <div id="szó" class="text-white"></div>
+        <div
+            class="text-center items-center justify-center m-auto flex h-screen"
+        >
+            <p
+                id="magyar"
+                class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+            ></p>
+            <form id="nemet">
+                <input
+                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                    type="string"
+                    name="nemet"
+                    placeholder="Német"
+                />
+                <input
+                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                    type="string"
+                    name="perfekt"
+                    placeholder="Perfekt"
+                />
+                <input
+                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                    type="string"
+                    name="prateritum"
+                    placeholder="Präteritum"
+                />
+                <button
+                    type="submit"
+                    class="bg-blue-400 px-2 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-blue-600"
+                >
+                    Feldolgozás
+                </button>
+            </form>
+        </div>
     </body>
 </html>
