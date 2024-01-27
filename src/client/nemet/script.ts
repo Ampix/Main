@@ -1,17 +1,18 @@
 import { Console } from "node:console";
 import json from "./szavak.json";
-const szavak = json.szavak;
+const szavak = json.szavak1;
 // console.log(json);
-
-function szav_valaszt() {
-	const szó = document.getElementById("magyar");
+let points = 0;
+let index = 0;
+function valszto(): string {
+	const magyar_szó = szavak[index].magyar;
+	const szó = document.getElementById("szó");
 	if (szó) {
-		const index = 0;
-
-		szó.innerText = szavak[index].magyar;
+		szó.innerText = magyar_szó;
 	}
+	return magyar_szó;
 }
-szav_valaszt();
+
 function ellenorzo(
 	magyar: string,
 	nemet: string,
@@ -34,11 +35,18 @@ function ellenorzo(
 			szavak[megoldasindex].perfect === perfekt
 		) {
 			eredmeny.innerText = "A szavak helyesek";
+			points++;
 		} else {
 			eredmeny.innerText = `A szavak nem helyesek, mert a helyes megoldások a következők ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect} és ${szavak[megoldasindex].präteritum}`;
 		}
+		index++;
 	}
 }
+document.getElementById("start_btn")?.addEventListener("click", (e) => {
+	e.preventDefault();
+	document.getElementById("start")?.classList.add("hidden");
+	document.getElementById("lenyeg")?.classList.remove("hidden");
+});
 document.getElementById("nemet")?.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const data = new FormData(e.target as HTMLFormElement);
@@ -46,6 +54,7 @@ document.getElementById("nemet")?.addEventListener("submit", (e) => {
 
 	const perfekt = String(Object.fromEntries(data.entries()).perfekt);
 	const prateritum = String(Object.fromEntries(data.entries()).prateritum);
-	ellenorzo("elkezdeni", nemet, perfekt, prateritum);
+
+	ellenorzo(valszto(), nemet, perfekt, prateritum);
 	console.log(nemet, perfekt, prateritum);
 });

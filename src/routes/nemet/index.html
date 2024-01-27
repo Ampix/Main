@@ -10,36 +10,53 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     </head>
     <body class="bg-slate-700">
-        <div id="szó" class="text-white"></div>
-        <div class="text-center items-center justify-center">
-            <form id="nemet">
-                <input
-                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
-                    type="string"
-                    name="nemet"
-                    placeholder="Német"
-                />
-                <input
-                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
-                    type="string"
-                    name="perfekt"
-                    placeholder="Perfekt"
-                />
-                <input
-                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
-                    type="string"
-                    name="prateritum"
-                    placeholder="Präteritum"
-                />
-                <button
-                    type="submit"
-                    class="bg-blue-400 px-2 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-blue-600"
-                >
-                    Ellenörzés
-                </button>
-            </form>
+        <div class="flex h-screen" id="start">
+            <div class="m-auto">
+                <h1>Igealakok</h1>
+                <button id="start_btn">Start</button>
+            </div>
+        </div>
 
-            <h1 class="text-white" id="eredmeny"></h1>
+        <div id="lenyeg" class="hidden">
+            <div
+                class="text-center items-center justify-center flex h-screen m-auto"
+            >
+                <h1
+                    class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                    id="szó"
+                ></h1>
+                <form id="nemet">
+                    <input
+                        class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                        type="string"
+                        name="nemet"
+                        placeholder="Német"
+                    />
+                    <input
+                        class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                        type="string"
+                        name="perfekt"
+                        placeholder="Perfekt"
+                    />
+                    <input
+                        class="bg-blue-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-blue-600"
+                        type="string"
+                        name="prateritum"
+                        placeholder="Präteritum"
+                    />
+                    <button
+                        type="submit"
+                        class="bg-blue-400 px-2 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-blue-600"
+                    >
+                        Ellenörzés
+                    </button>
+                </form>
+            </div>
+
+            <h1
+                class="text-white text-2xl text-center items-center justify-center"
+                id="eredmeny"
+            ></h1>
         </div>
     </body>
 </html>
