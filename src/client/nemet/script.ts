@@ -1,6 +1,6 @@
 import json from "./szavak.json";
 const szavak = json.szavak;
-console.log(json);
+// console.log(json);
 
 function szav_valaszt() {
 	const szó = document.getElementById("magyar");
@@ -11,6 +11,11 @@ function szav_valaszt() {
 	}
 }
 szav_valaszt();
+function ellenorzo(magyar, nemet, perfekt, prateritum) {
+	if (szavak[szavak.indexOf(magyar) == magyar]) {
+		console.log("pryma");
+	}
+}
 document.getElementById("nemet")?.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const data = new FormData(e.target as HTMLFormElement);
