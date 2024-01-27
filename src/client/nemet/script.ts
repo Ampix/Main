@@ -1,5 +1,5 @@
 import json from "./szavak.json";
-const szavak = json;
+const szavak = json.szavak;
 console.log(json);
 
 function szav_valaszt() {
