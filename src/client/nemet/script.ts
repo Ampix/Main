@@ -10,9 +10,10 @@ function valszto(): string {
 
 	const szó = document.getElementById("szó");
 	if (szó) {
-		szó.innerText =
-			String(magyar_szó[0].toUpperCase()) +
-			magyar_szó.slice(1, magyar_szó.length);
+		szó.innerText = `${magyar_szó[0].toUpperCase()}${magyar_szó.slice(
+			1,
+			magyar_szó.length,
+		)} (${index + 1}/${szavak.length})`;
 	}
 	return magyar_szó;
 }
@@ -34,9 +35,15 @@ function ellenorzo(
 		const magyar_real = szavak[megoldasindex].magyar;
 		const nemet_real = szavak[megoldasindex].német;
 		const prateritum_real = szavak[megoldasindex].prateritum;
-
-		console.log(perfekt_bonusreal);
-		console.log(perfekt_real);
+		console.log(perfekt_bonus, perfekt_bonusreal);
+		console.log(
+			nemet_real === nemet,
+			prateritum_real === prateritum,
+			perfekt_real === perfekt,
+			perfekt_bonus === perfekt_bonusreal,
+		);
+		eredmeny.classList.remove("hidden");
+		lenyeg.classList.add("hidden");
 		if (
 			magyar_real === magyar &&
 			nemet_real === nemet &&
@@ -45,21 +52,28 @@ function ellenorzo(
 			perfekt_bonus === perfekt_bonusreal
 		) {
 			eredmeny.innerText = "A szavak helyesek";
-			eredmeny.classList.remove("hidden");
-			lenyeg.classList.add("hidden");
 			eredmeny.classList.add("text-green-500");
 			points++;
 		} else {
-			eredmeny.innerText = `A szavak nem helyesek, mert a helyes megoldások a következők ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect} és ${szavak[megoldasindex].prateritum}`;
+			eredmeny.classList.add("text-red-700");
+			eredmeny.innerText = `A helyes megoldások a következők:\n ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect}  és ${szavak[megoldasindex].prateritum}`;
 		}
 		index++;
+
 		valszto();
+		setTimeout(() => {
+			document.getElementById("lenyeg")?.classList.remove("hidden");
+			document.getElementById("lenyeg")?.classList.add("grid");
+			document.getElementById("eredmeny")?.classList.add("hidden");
+		}, 1994);
 	}
 }
 document.getElementById("start_btn")?.addEventListener("click", (e) => {
 	e.preventDefault();
 	document.getElementById("start")?.classList.add("hidden");
 	document.getElementById("lenyeg")?.classList.remove("hidden");
+	document.getElementById("lenyeg")?.classList.add("grid");
+
 	valszto();
 });
 document.getElementById("nemet")?.addEventListener("submit", (e) => {
@@ -74,5 +88,5 @@ document.getElementById("nemet")?.addEventListener("submit", (e) => {
 	);
 
 	ellenorzo(valszto(), nemet, perfekt, prateritum, perfekt_bonus);
-	console.log(nemet, perfekt, prateritum);
+	(document.getElementById("nemet") as HTMLFormElement)?.reset();
 });

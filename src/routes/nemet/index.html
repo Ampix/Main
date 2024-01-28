@@ -10,56 +10,65 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     </head>
     <body class="bg-slate-700">
-        <div class="flex h-screen" id="start">
-            <div class="m-auto">
-                <h1>Igealakok</h1>
-                <button id="start_btn">Start</button>
+        <div class="flex h-screen">
+            <div class="m-auto text-center text-white" id="start">
+                <h1 class="text-9xl mb-14 tracking-wider font-extrabold">
+                    Igealakok
+                </h1>
+                <button
+                    id="start_btn"
+                    class="bg-emerald-400 font-semibold text-5xl px-3 py-1 rounded-lg hover:bg-emerald-700"
+                >
+                    Tanulás
+                </button>
             </div>
-        </div>
 
-        <div id="lenyeg" class="hidden">
             <div
-                class="text-center items-center justify-center flex h-screen m-auto"
+                id="lenyeg"
+                class="text-center items-center justify-center grid-cols-1 m-auto hidden"
             >
-                <form id="nemet" class="">
-                    <h1
-                        class="bg-black w-auto text-white text-center text-5xl rounded-lg py-2 my-4"
-                        id="szó"
-                    ></h1>
-                    <input
-                        class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
-                        type="string"
-                        name="nemet"
-                        placeholder="Német"
-                    />
-                    <select
-                        name="perfekt_bonus"
-                        class="bg-red-700 w-[5rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
-                    >
-                        <option value="h.">h.</option>
-                        <option value="i.">i.</option>
-                    </select>
-                    <input
-                        class="bg-red-700 w-[15rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
-                        type="string"
-                        name="perfekt"
-                        placeholder="Perfekt"
-                    />
-                    <input
-                        class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
-                        type="string"
-                        name="prateritum"
-                        placeholder="Präteritum"
-                    />
-                    <button
-                        type="submit"
-                        class="bg-yellow-400 text-center text-3xl rounded-lg py-2 my-4 w-auto"
-                    >
-                        Ellenőrzés
-                    </button>
+                <h1
+                    class="bg-black w-auto text-white text-center text-5xl rounded-lg py-2 my-4"
+                    id="szó"
+                ></h1>
+                <form id="nemet">
+                    <div class="">
+                        <input
+                            class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800 mb-3 lg:mb-0"
+                            type="string"
+                            name="nemet"
+                            placeholder="Német"
+                        />
+                        <select
+                            name="perfekt_bonus"
+                            class="bg-red-700 w-[3rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800 mb-3 lg:mb-0"
+                        >
+                            <option value="h.">h.</option>
+                            <option value="i.">i.</option>
+                        </select>
+                        <input
+                            class="bg-red-700 w-[15rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800 mb-3 lg:mb-0"
+                            type="string"
+                            name="perfekt"
+                            placeholder="Perfekt"
+                        />
+                        <input
+                            class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800 mb-3 lg:mb-0"
+                            type="string"
+                            name="prateritum"
+                            placeholder="Präteritum"
+                        />
+                    </div>
                 </form>
+                <button
+                    type="submit"
+                    class="bg-yellow-400 text-center text-3xl rounded-lg py-2 my-4 w-full"
+                    form="nemet"
+                >
+                    Ellenőrzés
+                </button>
             </div>
+            <div class="hidden m-auto text-5xl text-center" id="eredmeny"></div>
         </div>
-        <div class="hidden" id="eredmeny"></div>
     </body>
 </html>
