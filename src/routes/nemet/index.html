@@ -27,13 +27,20 @@
                         id="szó"
                     ></h1>
                     <input
-                        class="bg-red-700 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
+                        class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
                         type="string"
                         name="nemet"
                         placeholder="Német"
                     />
+                    <select
+                        name="perfekt_bonus"
+                        class="bg-red-700 w-[5rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
+                    >
+                        <option value="h.">h.</option>
+                        <option value="i.">i.</option>
+                    </select>
                     <input
-                        class="bg-red-700 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
+                        class="bg-red-700 w-[15rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
                         type="string"
                         name="perfekt"
                         placeholder="Perfekt"
@@ -46,18 +53,13 @@
                     />
                     <button
                         type="submit"
-                        class="bg-red-700 w-[20rem] placeholder:text-white text-white text-center text-xl rounded-lg py-1 focus:bg-red-800"
+                        class="bg-yellow-400 text-center text-3xl rounded-lg py-2 my-4 w-auto"
                     >
                         Ellenőrzés
                     </button>
-                    <h1
-                        class="bg-yellow-400 text-center text-3xl rounded-lg py-2 my-4 w-auto"
-                        id="eredmeny"
-                    >
-                        Eddig jó
-                    </h1>
                 </form>
             </div>
         </div>
+        <div class="hidden" id="eredmeny"></div>
     </body>
 </html>

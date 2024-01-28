@@ -1,12 +1,13 @@
-import { Console } from "node:console";
+import { Console, time } from "node:console";
 import json from "./szavak.json";
 const szavak = json.szavak1;
 // console.log(json);
 let points = 0;
 let index = 0;
+
 function valszto(): string {
 	const magyar_szó = szavak[index].magyar;
-	console.log(magyar_szó);
+
 	const szó = document.getElementById("szó");
 	if (szó) {
 		szó.innerText =
@@ -21,33 +22,38 @@ function ellenorzo(
 	nemet: string,
 	perfekt: string,
 	prateritum: string,
+	perfekt_bonus: string,
 ) {
 	const eredmeny = document.getElementById("eredmeny");
+	const lenyeg = document.getElementById("lenyeg");
 	// const valasz = szavak.find((element) => element.magyar === magyar);
-	if (eredmeny) {
+	if (eredmeny && lenyeg) {
 		const megoldasindex = index;
+		const perfekt_bonusreal = szavak[megoldasindex].perfect.split(" ")[0];
+		const perfekt_real = szavak[megoldasindex].perfect.split(" ")[1];
+		const magyar_real = szavak[megoldasindex].magyar;
+		const nemet_real = szavak[megoldasindex].német;
+		const prateritum_real = szavak[megoldasindex].prateritum;
 
-		// console.log(szavak[megoldasindex].magyar === magyar);
-		// console.log(szavak[megoldasindex].perfect === perfekt);
-		// console.log(szavak[megoldasindex].német === nemet);
-		// console.log(szavak[megoldasindex].prateritum === prateritum);
-		console.log(szavak[megoldasindex]);
-		console.log(szavak[megoldasindex].perfect);
-		console.log(szavak[megoldasindex].német);
-		console.log(szavak[megoldasindex].prateritum);
+		console.log(perfekt_bonusreal);
+		console.log(perfekt_real);
 		if (
-			szavak[megoldasindex].magyar === magyar &&
-			szavak[megoldasindex].német === nemet &&
-			szavak[megoldasindex].prateritum === prateritum &&
-			szavak[megoldasindex].perfect === perfekt
+			magyar_real === magyar &&
+			nemet_real === nemet &&
+			prateritum_real === prateritum &&
+			perfekt_real === perfekt &&
+			perfekt_bonus === perfekt_bonusreal
 		) {
 			eredmeny.innerText = "A szavak helyesek";
+			eredmeny.classList.remove("hidden");
+			lenyeg.classList.add("hidden");
+			eredmeny.classList.add("text-green-500");
 			points++;
-			index++;
 		} else {
 			eredmeny.innerText = `A szavak nem helyesek, mert a helyes megoldások a következők ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect} és ${szavak[megoldasindex].prateritum}`;
 		}
 		index++;
+		valszto();
 	}
 }
 document.getElementById("start_btn")?.addEventListener("click", (e) => {
@@ -63,8 +69,10 @@ document.getElementById("nemet")?.addEventListener("submit", (e) => {
 
 	const prateritum = String(Object.fromEntries(data.entries()).prateritum);
 	const perfekt = String(Object.fromEntries(data.entries()).perfekt);
-	console.log(prateritum);
+	const perfekt_bonus = String(
+		Object.fromEntries(data.entries()).perfekt_bonus,
+	);
 
-	ellenorzo(valszto(), nemet, perfekt, prateritum);
+	ellenorzo(valszto(), nemet, perfekt, prateritum, perfekt_bonus);
 	console.log(nemet, perfekt, prateritum);
 });
