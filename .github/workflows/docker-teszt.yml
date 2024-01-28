@@ -5,6 +5,7 @@ name: Docker
 # separate terms of service, privacy policy, and support
 # documentation.
 
+runs-on: self-hosted
 on:
   schedule:
     - cron: '30 23 * * *'
