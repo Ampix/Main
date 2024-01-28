@@ -23,27 +23,29 @@ function ellenorzo(
 	prateritum: string,
 ) {
 	const eredmeny = document.getElementById("eredmeny");
-	const valasz = szavak.find((element) => element.magyar === magyar);
-	if (valasz && eredmeny) {
-		const megoldasindex = szavak.indexOf(valasz);
+	// const valasz = szavak.find((element) => element.magyar === magyar);
+	if (eredmeny) {
+		const megoldasindex = index;
 
 		// console.log(szavak[megoldasindex].magyar === magyar);
 		// console.log(szavak[megoldasindex].perfect === perfekt);
 		// console.log(szavak[megoldasindex].német === nemet);
-		// console.log(szavak[megoldasindex].präteritum === prateritum);
+		// console.log(szavak[megoldasindex].prateritum === prateritum);
+		console.log(szavak[megoldasindex]);
 		console.log(szavak[megoldasindex].perfect);
 		console.log(szavak[megoldasindex].német);
-		console.log(szavak[megoldasindex].präteritum);
+		console.log(szavak[megoldasindex].prateritum);
 		if (
 			szavak[megoldasindex].magyar === magyar &&
 			szavak[megoldasindex].német === nemet &&
-			szavak[megoldasindex].präteritum === prateritum &&
+			szavak[megoldasindex].prateritum === prateritum &&
 			szavak[megoldasindex].perfect === perfekt
 		) {
 			eredmeny.innerText = "A szavak helyesek";
 			points++;
+			index++;
 		} else {
-			eredmeny.innerText = `A szavak nem helyesek, mert a helyes megoldások a következők ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect} és ${szavak[megoldasindex].präteritum}`;
+			eredmeny.innerText = `A szavak nem helyesek, mert a helyes megoldások a következők ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect} és ${szavak[megoldasindex].prateritum}`;
 		}
 		index++;
 	}
@@ -59,8 +61,9 @@ document.getElementById("nemet")?.addEventListener("submit", (e) => {
 	const data = new FormData(e.target as HTMLFormElement);
 	const nemet = String(Object.fromEntries(data.entries()).nemet);
 
-	const perfekt = String(Object.fromEntries(data.entries()).perfekt);
 	const prateritum = String(Object.fromEntries(data.entries()).prateritum);
+	const perfekt = String(Object.fromEntries(data.entries()).perfekt);
+	console.log(prateritum);
 
 	ellenorzo(valszto(), nemet, perfekt, prateritum);
 	console.log(nemet, perfekt, prateritum);
