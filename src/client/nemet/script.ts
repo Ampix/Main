@@ -4,8 +4,9 @@ const szavak = json.szavak1;
 // console.log(json);
 let points = 0;
 let index = 0;
-
+const indexes: number[] = [];
 function valszto(): string {
+	indexes.push(index);
 	const magyar_szó = szavak[index].magyar;
 
 	const szó = document.getElementById("szó");
@@ -58,14 +59,16 @@ function ellenorzo(
 			eredmeny.classList.add("text-red-700");
 			eredmeny.innerText = `A helyes megoldások a következők:\n ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect}  és ${szavak[megoldasindex].prateritum}`;
 		}
-		index++;
-
+		let tmp = Math.floor(Math.random() * (szavak.length - 1));
+		while (indexes.includes(tmp))
+			tmp = Math.floor(Math.random() * (szavak.length - 1));
+		index = tmp;
 		valszto();
 		setTimeout(() => {
 			document.getElementById("lenyeg")?.classList.remove("hidden");
 			document.getElementById("lenyeg")?.classList.add("grid");
 			document.getElementById("eredmeny")?.classList.add("hidden");
-		}, 1994);
+		}, 1900);
 	}
 }
 document.getElementById("start_btn")?.addEventListener("click", (e) => {
