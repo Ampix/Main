@@ -1,11 +1,13 @@
 import { Console, time } from "node:console";
 import json from "./szavak.json";
+import { randomInt } from "node:crypto";
 const szavak = json.szavak1;
 // console.log(json);
 let points = 0;
 let index = 0;
-
+let indexes: number[] = [];
 function valszto(): string {
+	indexes.push(index);
 	const magyar_szó = szavak[index].magyar;
 
 	const szó = document.getElementById("szó");
@@ -58,8 +60,10 @@ function ellenorzo(
 			eredmeny.classList.add("text-red-700");
 			eredmeny.innerText = `A helyes megoldások a következők:\n ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect}  és ${szavak[megoldasindex].prateritum}`;
 		}
-		index++;
-
+		let tmp = Math.floor(Math.random() * (szavak.length - 1));
+		while (indexes.includes(tmp))
+			tmp = Math.floor(Math.random() * (szavak.length - 1));
+		index = tmp;
 		valszto();
 		setTimeout(() => {
 			document.getElementById("lenyeg")?.classList.remove("hidden");
