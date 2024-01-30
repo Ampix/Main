@@ -3,8 +3,8 @@ import json from "./szavak.json";
 const szavak = json.szavak1;
 // console.log(json);
 let points = 0;
-let index = 0;
-const indexes: number[] = [];
+let index = Math.floor(Math.random() * (szavak.length - 1));
+let indexes: number[] = [];
 function valszto(): string {
 	indexes.push(index);
 	const magyar_szó = szavak[index].magyar;
@@ -60,8 +60,10 @@ function ellenorzo(
 			eredmeny.innerText = `A helyes megoldások a következők:\n ${szavak[megoldasindex].német}, ${szavak[megoldasindex].perfect}  és ${szavak[megoldasindex].prateritum}`;
 		}
 		let tmp = Math.floor(Math.random() * (szavak.length - 1));
-		while (indexes.includes(tmp))
+		while (indexes.includes(tmp)) {
+			if (indexes.length === szavak.length) indexes = [];
 			tmp = Math.floor(Math.random() * (szavak.length - 1));
+		}
 		index = tmp;
 		valszto();
 		setTimeout(() => {
