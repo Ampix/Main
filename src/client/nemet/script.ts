@@ -68,7 +68,7 @@ function ellenorzo(
 			document.getElementById("lenyeg")?.classList.remove("hidden");
 			document.getElementById("lenyeg")?.classList.add("grid");
 			document.getElementById("eredmeny")?.classList.add("hidden");
-		}, 1994);
+		}, 1900);
 	}
 }
 document.getElementById("start_btn")?.addEventListener("click", (e) => {
