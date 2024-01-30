@@ -1,11 +1,10 @@
 import { Console, time } from "node:console";
 import json from "./szavak.json";
-import { randomInt } from "node:crypto";
 const szavak = json.szavak1;
 // console.log(json);
 let points = 0;
 let index = 0;
-let indexes: number[] = [];
+const indexes: number[] = [];
 function valszto(): string {
 	indexes.push(index);
 	const magyar_szó = szavak[index].magyar;
