@@ -4,7 +4,6 @@ name: Docker
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-runs-on: self-hosted
 on:
   schedule:
     - cron: '30 23 * * *'
@@ -24,7 +23,7 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
