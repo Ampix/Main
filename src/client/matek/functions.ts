@@ -58,4 +58,19 @@ export function quickSort(arr: number[]): number[] {
 	// Spread syntax '...' is used to concatenate arrays.
 	return [...quickSort(left), pivot, ...quickSort(right)];
 }
+export function clear(bad: boolean): void {
+	const bal_oldal = document.getElementById("bal_oldal");
+	const jobb_oldal = document.getElementById("jobb_oldal");
+	const summarized = document.getElementById("summarized");
+	const osztócím = document.getElementById("osztó");
+	const osztók_div = document.getElementById("osztók");
+	const form = document.getElementById("prime_number_form");
+	if (bal_oldal && jobb_oldal && summarized && osztócím && osztók_div) {
+		bal_oldal.innerHTML = "";
+		jobb_oldal.innerHTML = "";
+		summarized.innerHTML = "";
+		osztók_div.innerHTML = "";
+	}
+}
+
 // export function lnko(numbers:)
