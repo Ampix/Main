@@ -6,8 +6,8 @@ import {
 	quickSort,
 } from "./functions.js";
 
-function prime_number_(input: number): void {
-	if (input <= 1) return;
+function prime_number_(input: number, other: boolean): number[][] {
+	if (input <= 1) input = Math.abs(input);
 
 	const start = performance.now();
 	const bal_oldal = document.getElementById("bal_oldal");
@@ -69,6 +69,7 @@ function prime_number_(input: number): void {
 				result[0].push(cucc);
 			}
 		}
+		if (other) return result;
 		if (need_to) {
 			for (const element of result[1]) {
 				number_of_oszók *= element + 1;
@@ -173,6 +174,7 @@ function prime_number_(input: number): void {
 	}
 	const end = performance.now();
 	console.log(`Execution time: ${end - start} ms`);
+	return [[]];
 }
 
 document
@@ -180,5 +182,5 @@ document
 	?.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target as HTMLFormElement);
-		prime_number_(Number(Object.fromEntries(data.entries()).prime));
+		prime_number_(Number(Object.fromEntries(data.entries()).prime), false);
 	});

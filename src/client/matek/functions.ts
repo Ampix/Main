@@ -9,11 +9,11 @@ export function prime_numbers(num: number): number {
 		return num;
 	}
 
-	return 1;
+	return 0;
 }
 
 export function check_if_one(num: number): boolean {
-	return num !== 1;
+	return num !== 0;
 }
 
 export function array_in_array(
@@ -58,3 +58,4 @@ export function quickSort(arr: number[]): number[] {
 	// Spread syntax '...' is used to concatenate arrays.
 	return [...quickSort(left), pivot, ...quickSort(right)];
 }
+// export function lnko(numbers:)
