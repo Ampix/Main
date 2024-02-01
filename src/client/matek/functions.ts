@@ -65,12 +65,28 @@ export function clear(bad: boolean): void {
 	const osztócím = document.getElementById("osztó");
 	const osztók_div = document.getElementById("osztók");
 	const form = document.getElementById("prime_number_form");
-	if (bal_oldal && jobb_oldal && summarized && osztócím && osztók_div) {
+	const oszlopok = document.getElementById("oszlopok");
+
+	if (
+		bal_oldal &&
+		jobb_oldal &&
+		summarized &&
+		osztócím &&
+		osztók_div &&
+		oszlopok
+	) {
 		bal_oldal.innerHTML = "";
 		jobb_oldal.innerHTML = "";
 		summarized.innerHTML = "";
 		osztók_div.innerHTML = "";
+		osztócím.innerHTML = "";
+
+		oszlopok.classList.remove("hidden");
+		if (bad) {
+			oszlopok.classList.add("hidden");
+			(form as HTMLFormElement)?.reset();
+		}
 	}
 }
 
-// export function lnko(numbers:)
+// export function lnko(numbers:number[]):
