@@ -10,3 +10,7 @@ router.get("/", (req, res) => {
 router.get("/app", (req, res) => {
 	res.sendFile(path.resolve("src/routes/sckk/app.html"));
 });
+
+router.get("/filter", (req, res) => {
+	res.sendFile(path.resolve("src/routes/sckk/filter.html"));
+});
