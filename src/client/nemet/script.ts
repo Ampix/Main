@@ -6,7 +6,6 @@ let points = 0;
 let index = Math.floor(Math.random() * (szavak.length - 1));
 let indexes: number[] = [];
 function valszto(): string {
-	indexes.push(index);
 	const magyar_szó = szavak[index].magyar;
 
 	const szó = document.getElementById("szó");
@@ -14,7 +13,7 @@ function valszto(): string {
 		szó.innerText = `${magyar_szó[0].toUpperCase()}${magyar_szó.slice(
 			1,
 			magyar_szó.length,
-		)} (${index + 1}/${szavak.length})`;
+		)} (${indexes.length + 1}/${szavak.length})`;
 	}
 	return magyar_szó;
 }
@@ -65,12 +64,13 @@ function ellenorzo(
 			tmp = Math.floor(Math.random() * (szavak.length - 1));
 		}
 		index = tmp;
+		indexes.push(index);
 		valszto();
 		setTimeout(() => {
 			document.getElementById("lenyeg")?.classList.remove("hidden");
 			document.getElementById("lenyeg")?.classList.add("grid");
 			document.getElementById("eredmeny")?.classList.add("hidden");
-		}, 1900);
+		}, 2000);
 	}
 }
 document.getElementById("start_btn")?.addEventListener("click", (e) => {
@@ -84,10 +84,14 @@ document.getElementById("start_btn")?.addEventListener("click", (e) => {
 document.getElementById("nemet")?.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const data = new FormData(e.target as HTMLFormElement);
-	const nemet = String(Object.fromEntries(data.entries()).nemet);
+	const nemet = String(Object.fromEntries(data.entries()).nemet).toLowerCase();
 
-	const prateritum = String(Object.fromEntries(data.entries()).prateritum);
-	const perfekt = String(Object.fromEntries(data.entries()).perfekt);
+	const prateritum = String(
+		Object.fromEntries(data.entries()).prateritum,
+	).toLowerCase();
+	const perfekt = String(
+		Object.fromEntries(data.entries()).perfekt,
+	).toLowerCase();
 	const perfekt_bonus = String(
 		Object.fromEntries(data.entries()).perfekt_bonus,
 	);
