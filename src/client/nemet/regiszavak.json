@@ -70,7 +70,7 @@
 		"magyar": "utazni",
 		"nemet": "fahren",
 		"präteritum": "fuhr",
-		"Perfect": "i.,/h. gefahren"
+		"Perfect": "i./h. gefahren"
 	},
 	"fallen": {
 		"magyar": "esni",
@@ -88,7 +88,7 @@
 		"magyar": "repülni",
 		"nemet": "fliegen",
 		"präteritum": "flog",
-		"Perfect": "i.,/h. geflogen"
+		"Perfect": "i./h. geflogen"
 	},
 	"fliehen": {
 		"magyar": "menekülni",
