@@ -11,8 +11,8 @@ const tagok = [
 	"Bill Ches",
 	"Benjamin Gayle",
 	"Marcus Dodson",
-	"James William",
-	"James Willliam",
+	"Ponziano Menta",
+	"Nicholas O Brien",
 ];
 
 document.getElementById("app-form")?.addEventListener("submit", (ev) => {
