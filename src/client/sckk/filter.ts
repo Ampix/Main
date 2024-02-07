@@ -18,7 +18,7 @@ const tagok = [
 document.getElementById("app-form")?.addEventListener("submit", (ev) => {
 	ev.preventDefault();
 	const formdata = new FormData(ev.target as HTMLFormElement);
-	if (formdata.get("type") === ("all" || "a")) {
+	if (["all", "a"].includes(formdata.get("type") as string)) {
 		formdata
 			.get("log")
 			?.toString()
