@@ -1,0 +1,231 @@
+{
+	"anfangen": {
+		"magyar": "elkezdeni",
+		"német": "anfangen",
+		"präteritum": "fing an",
+		"perfect": "h. angefangen"
+	},
+	"beginnen": {
+		"magyar": "elkezdeni",
+		"nemet": "beginnen",
+		"präteritum": "begann",
+		"Perfect": "h. begonnen"
+	},
+	"bekommen": {
+		"magyar": "kapni",
+		"nemet": "bekommen",
+		"präteritum": "bekam",
+		"Perfect": "h. bekommen"
+	},
+	"bieten": {
+		"magyar": "kinál",
+		"nemet": "bieten",
+		"präteritum": "bot",
+		"Perfect": "h. geboten"
+	},
+	"bleiben": {
+		"magyar": "maradni",
+		"nemet": "bleiben",
+		"präteritum": "blieb",
+		"Perfect": "i. geblieben"
+	},
+	"brechen": {
+		"magyar": "törni",
+		"nemet": "brechen",
+		"präteritum": "brach",
+		"Perfect": "h./i. gebrochen"
+	},
+	"bringen": {
+		"magyar": "hozni",
+		"nemet": "bringen",
+		"präteritum": "brachte",
+		"Perfect": "h. gebracht"
+	},
+	"denken": {
+		"magyar": "gondolni",
+		"nemet": "denken",
+		"präteritum": "dachte",
+		"Perfect": "h. gedacht"
+	},
+
+	"dürfen": {
+		"magyar": "szabad",
+		"nemet": "dürfen",
+		"präteritum": "durfte",
+		"Perfect": "h. gedurft"
+	},
+	"empfehlen": {
+		"magyar": "ajánlani",
+		"nemet": "empfehlen",
+		"präteritum": "empfahl",
+		"Perfect": "h. empfohlen"
+	},
+	"essen": {
+		"magyar": "enni",
+		"nemet": "essen",
+		"präteritum": "aß",
+		"Perfect": "h. gegessen"
+	},
+	"fahren": {
+		"magyar": "utazni",
+		"nemet": "fahren",
+		"präteritum": "fuhr",
+		"Perfect": "i./h. gefahren"
+	},
+	"fallen": {
+		"magyar": "esni",
+		"nemet": "fallen",
+		"präteritum": "fiel",
+		"Perfect": "i. gefallen"
+	},
+	"finden": {
+		"magyar": "találni",
+		"nemet": "finden",
+		"präteritum": "fand",
+		"Perfect": "h. gefunden"
+	},
+	"fliegen": {
+		"magyar": "repülni",
+		"nemet": "fliegen",
+		"präteritum": "flog",
+		"Perfect": "i./h. geflogen"
+	},
+	"fliehen": {
+		"magyar": "menekülni",
+		"nemet": "fliehen",
+		"präteritum": "floh",
+		"Perfect": "i. geflohen"
+	},
+	"frieren": {
+		"magyar": "fázni",
+		"nemet": "frieren",
+		"präteritum": "fror",
+		"Perfect": "h. gefroren"
+	},
+	"geben": {
+		"magyar": "adni",
+		"nemet": "geben",
+		"präteritum": "gab",
+		"Perfect": "h. gegeben"
+	},
+	"gefallen": {
+		"magyar": "tetszeni",
+		"nemet": "gefallen",
+		"präteritum": "gefiel",
+		"Perfect": "h. gefallen"
+	},
+	"gehen": {
+		"magyar": "menni",
+		"nemet": "gehen",
+		"präteritum": "ging",
+		"Perfect": "i. gegangen"
+	},
+	"gelten": {
+		"magyar": "érvényes",
+		"nemet": "gelten",
+		"präteritum": "galt",
+		"Perfect": "h. gegolten"
+	},
+	"gelingen": {
+		"magyar": "sikerülni",
+		"nemet": "gelingen",
+		"präteritum": "gelang",
+		"Perfect": "i. gelungen"
+	},
+	"genießen": {
+		"magyar": "élvezni",
+		"nemet": "genießen",
+		"präteritum": "genoss",
+		"Perfect": "h. genossen"
+	},
+	"gewinnen": {
+		"magyar": "nyerni",
+		"nemet": "gewinnen",
+		"präteritum": "gewann",
+		"Perfect": "h. gewonnen"
+	},
+	"haben": {
+		"magyar": "birtokolni",
+		"nemet": "haben",
+		"präteritum": "hatte",
+		"Perfect": "h. gehabt"
+	},
+	"halten": {
+		"magyar": "tartani",
+		"nemet": "halten",
+		"präteritum": "hielt",
+		"Perfect": "h. gehalten"
+	},
+	"hängen": {
+		"magyar": "akasztani",
+		"nemet": "hängen",
+		"präteritum": "hing",
+		"Perfect": "h. gehangen"
+	},
+	"heißen": {
+		"magyar": "nevezni",
+		"nemet": "heißen",
+		"präteritum": "hieß",
+		"Perfect": "h. geheißen"
+	},
+	"helfen": {
+		"magyar": "segíteni",
+		"nemet": "helfen",
+		"präteritum": "half",
+		"Perfect": "h. geholfen"
+	},
+	"kennen": {
+		"magyar": "tudni",
+		"nemet": "kennen",
+		"präteritum": "kannte",
+		"Perfect": "h. gekannt"
+	},
+	"kommen": {
+		"magyar": "jönni",
+		"nemet": "kommen",
+		"präteritum": "kam",
+		"Perfect": "i. gekommen"
+	},
+	"können": {
+		"magyar": "tudni",
+		"nemet": "können",
+		"präteritum": "konnte",
+		"Perfect": "h. gekonnt"
+	},
+	"einladen": {
+		"magyar": "meghívni",
+		"nemet": "einladen",
+		"präteritum": "lud ein",
+		"Perfect": "h. eingeladen"
+	},
+	"lassen": {
+		"magyar": "hagyni",
+		"nemet": "lassen",
+		"präteritum": "ließ",
+		"Perfect": "h. gelassen"
+	},
+	"laufen": {
+		"magyar": "futni",
+		"nemet": "laufen",
+		"präteritum": "lief",
+		"Perfect": "i. gelaufen"
+	},
+	"leihen": {
+		"magyar": "kölcsönözni",
+		"nemet": "leihen",
+		"präteritum": "lieh",
+		"Perfect": "h. geliehen"
+	},
+	"lesen": {
+		"magyar": "olvasni",
+		"nemet": "lesen",
+		"präteritum": "las",
+		"Perfect": "h. gelesen"
+	},
+	"liegen": {
+		"magyar": "feküdni",
+		"nemet": "liegen",
+		"präteritum": "lag",
+		"Perfect": "h. gelegen"
+	}
+}

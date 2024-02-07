@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SCKK</title>
         <link rel="stylesheet" href="/style.css" />
-        <script type="module" src="/scripts/sckk/app.js" defer></script>
+        <script type="module" src="/scripts/sckk/filter.js" defer></script>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta http-equiv="cache-control" content="max-age=0" />
         <meta http-equiv="cache-control" content="no-cache" />
@@ -16,12 +16,7 @@
     <body class="bg-slate-700 text-white">
         <div class="flex h-screen">
             <div class="m-auto">
-                <h2>A C műszak a maradékot jelenti!</h2>
                 <div id="form">
-                    <h1 class="text-center">
-                        Kérlek rakd be ide az App kódját! (Egyperces számítása
-                        még nem működik)
-                    </h1>
                     <form
                         action="javascript:;"
                         id="app-form"
@@ -32,6 +27,18 @@
                             id="log"
                             class="w-[80vw] h-[80vh] bg-slate-800 rounded-xl p-5"
                         ></textarea>
+                        <select
+                            name="type"
+                            class="bg-slate-800 text-center font-bold text-xl"
+                        >
+                            <option value="all">
+                                Összes (/hivasok, A műszakosok listázása)
+                            </option>
+                            <option value="a">
+                                A műszak (SCKK App, A műszakos hívások csak)
+                            </option>
+                            <option value="temp">Ideiglenes API</option>
+                        </select>
                         <button
                             type="submit"
                             class="bg-slate-800 rounded-xl font-bold text-xl px-3 py-1"

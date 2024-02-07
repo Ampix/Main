@@ -1,49 +1,22 @@
 import express from "express";
 import path from "node:path";
 
+import { api } from "../../main";
+
 export const router = express.Router();
 
 router.get("/", async (req, res) => {
-	if (req.signedCookies.userAuthCode) {
-		const cucc = await fetch(
-			`https://api.ampix.cloud/auth/${req.signedCookies.userAuthCode}/${req.ip}`,
-		);
-		if (cucc) {
-			console.log(cucc);
-		}
+	const ip = req.ip ? req.ip : "nincs";
+	if (req.signedCookies.auth_token) {
+		res.send("login done");
 	} else {
 		res.redirect(303, "/user/login");
 	}
 });
 
 router.get("/login", async (req, res) => {
-	res.sendFile(path.resolve("src/routes/user/login.html"));
+	res.sendFile(path.resolve("src/routes/user/login/index.html"));
 });
-
-router.get("/login/code", async (req, res) => {
-	res.sendFile(path.resolve("src/routes/user/code.html"));
-});
-
-router.post("/post-login", async (req, res) => {
-	const body = await req.body;
-	if (body?.email) {
-		const cucc = await fetch("https://api.ampix.cloud/users/login/mail", {
-			method: "POST",
-			cache: "no-cache",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email: body.email,
-			}),
-		});
-		console.log(cucc);
-		if (cucc.status === 200) {
-			res.redirect(303, "/user/login/code");
-		} else {
-			res.sendStatus(cucc.status);
-		}
-	} else {
-		res.redirect(303, "/user/login");
-	}
+router.get("/login/pop", async (req, res) => {
+	res.sendFile(path.resolve("src/routes/user/login/pop.html"));
 });
