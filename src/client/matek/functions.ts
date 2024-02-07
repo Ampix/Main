@@ -1,3 +1,5 @@
+import { prime_number_ } from "./script.ts";
+
 export function prime_numbers(num: number): number {
 	let counter = 0;
 	for (let index = 2; index <= Math.sqrt(num); index++) {
@@ -89,4 +91,12 @@ export function clear(bad: boolean): void {
 	}
 }
 
-// export function lnko(numbers:number[]):
+export function lnko(numbers: number[]): number[][] {
+	clear(false);
+	let data: number[][][] = [];
+	for (const element of numbers) {
+		data.push(prime_number_(element, true));
+
+		console.log(data);
+	}
+}

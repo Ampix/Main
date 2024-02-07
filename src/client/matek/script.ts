@@ -5,9 +5,10 @@ import {
 	osztósítás,
 	quickSort,
 	clear,
+	lnko,
 } from "./functions.js";
 
-function prime_number_(inputnum: number, other: boolean): number[][] {
+export function prime_number_(inputnum: number, other: boolean): number[][] {
 	if (inputnum === 0) {
 		clear(true);
 		return [];
@@ -42,6 +43,11 @@ function prime_number_(inputnum: number, other: boolean): number[][] {
 			osztók.push(num);
 			number_of_oszók += 1;
 		}
+		if (num === 1) {
+			need_to = false;
+			osztók = [1];
+			number_of_oszók = 1;
+		}
 		if (need_to) {
 			for (let index = 2; index < num / 2 + 1; index++) {
 				prime_numbers_under_num.push(prime_numbers(index));
@@ -74,7 +80,9 @@ function prime_number_(inputnum: number, other: boolean): number[][] {
 				result[0].push(cucc);
 			}
 		}
-		if (other) return result;
+		if (other) {
+			return result;
+		}
 		if (need_to) {
 			for (const element of result[1]) {
 				number_of_oszók *= element + 1;
@@ -183,6 +191,7 @@ document
 	.getElementById("prime_number_form")
 	?.addEventListener("submit", (e) => {
 		e.preventDefault();
+		lnko([12, 24]);
 		const data = new FormData(e.target as HTMLFormElement);
 		prime_number_(Number(Object.fromEntries(data.entries()).prime), false);
 	});
