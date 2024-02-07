@@ -4,11 +4,14 @@ import {
 	array_in_array,
 	osztósítás,
 	quickSort,
+	clear,
 } from "./functions.js";
 
-function prime_number_(input: number): void {
-	if (input <= 1) return;
-
+function prime_number_(inputnum: number, other: boolean): number[][] {
+	if (inputnum === 0) {
+		clear(true);
+		return [];
+	}
 	const start = performance.now();
 	const bal_oldal = document.getElementById("bal_oldal");
 	const jobb_oldal = document.getElementById("jobb_oldal");
@@ -21,7 +24,9 @@ function prime_number_(input: number): void {
 
 	if (bal_oldal && jobb_oldal && summarized && osztócím && osztók_div) {
 		const result: number[][] = [[], []];
+		const input = Math.abs(inputnum);
 		let num = input;
+
 		let prime_numbers_under_num = [];
 		let output = [];
 		const partial_result = [];
@@ -69,6 +74,7 @@ function prime_number_(input: number): void {
 				result[0].push(cucc);
 			}
 		}
+		if (other) return result;
 		if (need_to) {
 			for (const element of result[1]) {
 				number_of_oszók *= element + 1;
@@ -117,10 +123,7 @@ function prime_number_(input: number): void {
 		partial_result.push(1);
 		console.log(osztók);
 
-		bal_oldal.innerHTML = "";
-		jobb_oldal.innerHTML = "";
-		summarized.innerHTML = "";
-		osztók_div.innerHTML = "";
+		clear(false);
 
 		for (let i = 0; i < partial_result.length; i++) {
 			const element = document.createElement("h2");
@@ -173,6 +176,7 @@ function prime_number_(input: number): void {
 	}
 	const end = performance.now();
 	console.log(`Execution time: ${end - start} ms`);
+	return [[]];
 }
 
 document
@@ -180,5 +184,5 @@ document
 	?.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const data = new FormData(e.target as HTMLFormElement);
-		prime_number_(Number(Object.fromEntries(data.entries()).prime));
+		prime_number_(Number(Object.fromEntries(data.entries()).prime), false);
 	});
