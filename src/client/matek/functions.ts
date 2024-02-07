@@ -9,11 +9,11 @@ export function prime_numbers(num: number): number {
 		return num;
 	}
 
-	return 1;
+	return 0;
 }
 
 export function check_if_one(num: number): boolean {
-	return num !== 1;
+	return num !== 0;
 }
 
 export function array_in_array(
@@ -58,3 +58,35 @@ export function quickSort(arr: number[]): number[] {
 	// Spread syntax '...' is used to concatenate arrays.
 	return [...quickSort(left), pivot, ...quickSort(right)];
 }
+export function clear(bad: boolean): void {
+	const bal_oldal = document.getElementById("bal_oldal");
+	const jobb_oldal = document.getElementById("jobb_oldal");
+	const summarized = document.getElementById("summarized");
+	const osztócím = document.getElementById("osztó");
+	const osztók_div = document.getElementById("osztók");
+	const form = document.getElementById("prime_number_form");
+	const oszlopok = document.getElementById("oszlopok");
+
+	if (
+		bal_oldal &&
+		jobb_oldal &&
+		summarized &&
+		osztócím &&
+		osztók_div &&
+		oszlopok
+	) {
+		bal_oldal.innerHTML = "";
+		jobb_oldal.innerHTML = "";
+		summarized.innerHTML = "";
+		osztók_div.innerHTML = "";
+		osztócím.innerHTML = "";
+
+		oszlopok.classList.remove("hidden");
+		if (bad) {
+			oszlopok.classList.add("hidden");
+			(form as HTMLFormElement)?.reset();
+		}
+	}
+}
+
+// export function lnko(numbers:number[]):
