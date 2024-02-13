@@ -22,11 +22,24 @@
                         id="app-form"
                         class="grid grid-rows-1 gap-5"
                     >
-                        <textarea
-                            name="log"
-                            id="log"
-                            class="w-[80vw] h-[80vh] bg-slate-800 rounded-xl p-5"
-                        ></textarea>
+                        <div class="grid grid-cols-2">
+                            <div>
+                                <h1>Szöveg:</h1>
+                                <textarea
+                                    name="log"
+                                    id="log"
+                                    class="bg-slate-800 rounded-xl p-5"
+                                ></textarea>
+                            </div>
+                            <div>
+                                <h2>Tagok:</h2>
+                                <textarea
+                                    name="tagok"
+                                    id="tagok"
+                                    class="bg-slate-800 rounded-xl p-5"
+                                ></textarea>
+                            </div>
+                        </div>
                         <select
                             name="type"
                             class="bg-slate-800 text-center font-bold text-xl"
