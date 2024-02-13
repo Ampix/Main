@@ -10,7 +10,7 @@ document.getElementById('app-form')?.addEventListener('submit', (ev) => {
             ?.toString()
             .split('\n') as string[]) {
             if (line !== '') {
-                tagok.push(line.split('\t')[0])
+                tagok.push(line.trim())
             }
         }
         if (['all', 'a'].includes(formdata.get('type') as string)) {
