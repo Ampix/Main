@@ -5,12 +5,14 @@ document.getElementById('app-form')?.addEventListener('submit', (ev) => {
     ev.preventDefault()
     const formdata = new FormData(ev.target as HTMLFormElement)
     if (formdata) {
-        for (const line of formdata
-            .get('tagok')
-            ?.toString()
-            .split('\n') as string[]) {
-            if (line !== '') {
-                tagok.push(line.trim())
+        if (formdata.get('tagok')) {
+            for (const line of formdata
+                .get('tagok')
+                ?.toString()
+                .split('\n') as string[]) {
+                if (line !== '') {
+                    tagok.push(line.trim())
+                }
             }
         }
         if (['all', 'a'].includes(formdata.get('type') as string)) {
@@ -22,6 +24,7 @@ document.getElementById('app-form')?.addEventListener('submit', (ev) => {
                     if (formdata.get('type') === 'all') {
                         if (line.trim() !== '') {
                             const mama = line.split(':')
+                            console.log(mama)
                             if (tagok.includes(mama[0])) {
                                 final.push(line)
                             }
