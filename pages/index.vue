@@ -1,11 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-    <body class="bg-slate-700 text-white">
-        <div class="flex h-screen">
-            <div class="m-auto text-center">
-                <h1>Csá</h1>
-            </div>
+    <div class="flex h-screen">
+        <div class="m-auto">
+            <h1>Csá!</h1>
         </div>
-    </body>
+    </div>
 </template>

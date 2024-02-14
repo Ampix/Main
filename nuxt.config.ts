@@ -8,5 +8,5 @@ export default defineNuxtConfig({
         },
     },
     devtools: { enabled: true },
-    modules: ['@nuxtjs/tailwindcss'],
+    modules: ['@formkit/auto-animate', '@nuxt/ui'],
 })

@@ -15,6 +15,7 @@
         "vue-router": "^4.2.5"
     },
     "devDependencies": {
-        "@nuxtjs/tailwindcss": "^6.11.3"
+        "@formkit/auto-animate": "^0.8.1",
+        "@nuxt/ui": "^2.13.0"
     }
 }
