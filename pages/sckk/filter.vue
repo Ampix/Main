@@ -38,7 +38,7 @@ const fajta = ref(fajtak[0])
                     <UButton
                         type="submit"
                         color="primary"
-                        class="bg-slate-800 rounded-xl font-bold text-xl px-3 py-1"
+                        class="font-bold text-xl px-3 py-1"
                     >
                         Kezelés
                     </UButton>
