@@ -91,12 +91,46 @@ export function clear(bad: boolean): void {
 	}
 }
 
+function compareArrays(arrays: number[][], other: number[][]): number[] {
+	const output: number[][] = [[], []];
+	let heighest_length = 0;
+	let longest_array: number[] = [];
+	for (const arr of arrays) {
+		if (arr.length > heighest_length) heighest_length = arr.length;
+		longest_array = arr;
+	}
+
+	for (let i = 0; i < heighest_length; i++) {
+		for (const arr of arrays) {
+			if (
+				arr.includes(longest_array[i]) &&
+				arr.toString() !== longest_array.toString()
+			)
+				output[0].push(longest_array[i]);
+		}
+	}
+
+	console.log("output[0]", output[0]);
+	return quickSort(output[0]);
+}
+
 export function lnko(numbers: number[]): number[][] {
 	clear(false);
-	let data: number[][][] = [];
+	let result: number[][] = [[], []];
+	const felbontott: number[][][] = [[], []];
 	for (const element of numbers) {
-		data.push(prime_number_(element, true));
+		console.log(
+			"prime_number_(element, true)[0]",
+			prime_number_(element, true)[0],
+		);
+		console.log(
+			"prime_number_(element, true)[1]",
+			prime_number_(element, true)[1],
+		);
 
-		console.log(data);
+		felbontott[0].push(prime_number_(element, true)[0]);
+		felbontott[1].push(prime_number_(element, true)[1]);
 	}
+	console.log("felbontott", felbontott);
+	compareArrays(felbontott[0]);
 }

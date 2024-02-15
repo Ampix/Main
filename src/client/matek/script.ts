@@ -191,7 +191,7 @@ document
 	.getElementById("prime_number_form")
 	?.addEventListener("submit", (e) => {
 		e.preventDefault();
-		lnko([12, 24]);
+		lnko([12, 6, 13]);
 		const data = new FormData(e.target as HTMLFormElement);
 		prime_number_(Number(Object.fromEntries(data.entries()).prime), false);
 	});
