@@ -1,20 +1,14 @@
-# use the official Bun image
-# see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1 as base
+FROM node:20
 WORKDIR /app
 
-# install dependencies into temp directory
-# this will cache them and speed up future builds
 COPY package.json ./
-COPY bun.lockb ./
+COPY pnpm-lock.yaml ./
 
-ENV PROD=true
+RUN npm install -g pnpm
 
-RUN bun install
+RUN pnpm install
 
-COPY . .
+RUN pnpm build
 
-# run the app
-USER root
-EXPOSE 8080
-ENTRYPOINT [ "bun", "dev"]
+EXPOSE 3000
+ENTRYPOINT [ "node", ".output/server/index.mjs" ]
