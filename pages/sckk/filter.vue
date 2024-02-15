@@ -35,13 +35,12 @@ const fajta = ref(fajtak[0])
                         ></UTextarea>
                     </div>
                     <USelect v-model="fajta" :options="fajtak" />
-                    <UButton
+                    <button
                         type="submit"
-                        color="primary"
-                        class="font-bold text-xl px-3 py-1"
+                        class="font-bold bg-slate-600 text-xl px-3 py-1"
                     >
                         Kezelés
-                    </UButton>
+                    </button>
                 </form>
             </div>
             <div id="return" class="hidden text-center"></div>

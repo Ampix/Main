@@ -3,5 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-    <NuxtPage />
+    <body class="bg-gray-900 text-white">
+        <NuxtPage />
+    </body>
 </template>
