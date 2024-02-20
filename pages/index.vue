@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <div class="flex h-screen">
         <div class="m-auto text-center font-bold text-xl">
