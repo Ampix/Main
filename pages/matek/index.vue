@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+let test_output: Ref<number[]> = ref([])
 onMounted(() => {
     function prime_number_(inputnum: number, other: boolean): number[][] {
         if (inputnum === 0) {
@@ -201,7 +202,7 @@ onMounted(() => {
         .querySelector('#prime_number_form')
         ?.addEventListener('submit', (e) => {
             e.preventDefault()
-            // lnko([12, 6])
+            lnko([12, 6, 24])
             const data = new FormData(e.target as HTMLFormElement)
             prime_number_(
                 Number(Object.fromEntries(data.entries()).prime),
@@ -297,17 +298,28 @@ onMounted(() => {
         }
     }
 
-    function compareArrays(arrays: number[][], other: number[][]): number[] {
-        const output: number[][] = [[], []]
-        let heighest_length = 0
-        let longest_array: number[] = []
+    function compareArrays(arrays: number[][]): number[] {
+        const output: number[] = []
+        let lowest_length = 0
+        let shortest_array: number[] = []
         for (const arr of arrays) {
-            if (arr.length > heighest_length) heighest_length = arr.length
-            longest_array = arr
+            if (arr.length > lowest_length) lowest_length = arr.length
+            shortest_array = arr
+        }
+        for (let i = 0; i < shortest_array.length; i++) {
+            const element = shortest_array[i]
+            let count = 0
+            for (let j = 0; j < arrays.length; j++) {
+                const arr = arrays[j]
+                if (arr.includes(element)) count++
+            }
+            if (count >= lowest_length) output.push(element)
         }
 
-        console.log('output[0]', output[0])
-        return quickSort(output[0])
+        console.log('output', output)
+
+        test_output = ref(quickSort(output))
+        return quickSort(output)
     }
 
     function lnko(numbers: number[]): number[][] {
@@ -315,20 +327,11 @@ onMounted(() => {
         let result: number[][] = [[], []]
         const felbontott: number[][][] = [[], []]
         for (const element of numbers) {
-            console.log(
-                'prime_number_(element, true)[0]',
-                prime_number_(element, true)[0]
-            )
-            console.log(
-                'prime_number_(element, true)[1]',
-                prime_number_(element, true)[1]
-            )
-
             felbontott[0].push(prime_number_(element, true)[0])
             felbontott[1].push(prime_number_(element, true)[1])
         }
         console.log('felbontott', felbontott)
-        compareArrays(felbontott[0])
+        result[0] = compareArrays(felbontott[0])
     }
 })
 </script>
@@ -389,5 +392,6 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+        <h1>{{ test_output }}</h1>
     </div>
 </template>
