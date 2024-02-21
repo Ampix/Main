@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-let test_output: Ref<number[]> = ref([])
 onMounted(() => {
     function prime_number_(inputnum: number, other: boolean): number[][] {
         if (inputnum === 0) {
@@ -318,7 +317,6 @@ onMounted(() => {
 
         console.log('output', output)
 
-        test_output = ref(quickSort(output))
         return quickSort(output)
     }
 
@@ -392,6 +390,5 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <h1>{{ test_output }}</h1>
     </div>
 </template>
