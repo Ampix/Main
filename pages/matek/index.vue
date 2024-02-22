@@ -1,183 +1,56 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
-interface prime {
-    result: number[][]
-    output: number[]
-    osztók: number[]
-    number_of_osztók: number
-    partial_result: number[]
-}
-
 onMounted(() => {
-    function prime_number_(
-        inputnum: number,
-        other: boolean
-    ): prime | undefined {
-        let bekker: prime = {
-            result: [[], []],
-            output: [],
-            osztók: [],
-            number_of_osztók: 1,
-            partial_result: [],
-        }
-        const input = Math.abs(inputnum)
-        let num = input
-        let prime_numbers_under_num = []
-        let need_to = true
+    function clear(bad: boolean): void {
+        const bal_oldal = document.querySelector('#bal_oldal')
+        const jobb_oldal = document.querySelector('#jobb_oldal')
+        const summarized = document.querySelector('#summarized')
+        const osztócím = document.querySelector('#osztó')
+        const osztók_div = document.querySelector('#osztók')
+        const form = document.querySelector('#prime_number_form')
+        const oszlopok = document.querySelector('#oszlopok')
 
-        const result: number[][] = [[], []]
-        let output = []
-        const partial_result = []
-        let osztók: number[] = []
-        let number_of_oszók = 1
+        if (
+            bal_oldal &&
+            jobb_oldal &&
+            summarized &&
+            osztócím &&
+            osztók_div &&
+            oszlopok
+        ) {
+            bal_oldal.innerHTML = ''
+            jobb_oldal.innerHTML = ''
+            summarized.innerHTML = ''
+            osztók_div.innerHTML = ''
+            osztócím.innerHTML = ''
 
-        if (inputnum === 0) {
-            clear(true)
-            return undefined
-        }
-
-        const start = performance.now()
-
-        document.querySelector('#oszlopok')?.classList.remove('hidden')
-        document.querySelector('#oszlopok')?.classList.add('grid')
-
-        if (prime_numbers(num) === num) {
-            output.push(num)
-            partial_result.push(num)
-            need_to = false
-            osztók.push(1)
-            osztók.push(num)
-            number_of_oszók += 1
-        }
-        if (num === 1) {
-            need_to = false
-            osztók = [1]
-            number_of_oszók = 1
-        }
-        if (need_to) {
-            for (let index = 2; index < num / 2 + 1; index++) {
-                prime_numbers_under_num.push(prime_numbers(index))
-            }
-
-            prime_numbers_under_num.push(prime_numbers(num))
-            prime_numbers_under_num =
-                prime_numbers_under_num.filter(check_if_one)
-
-            for (
-                let index = 0;
-                index < prime_numbers_under_num.length;
-                index++
-            ) {
-                const element = prime_numbers_under_num[index]
-
-                while (num % element === 0) {
-                    output.push(element)
-                    partial_result.push(num)
-                    num /= element
-                }
-                if (num === 1) {
-                    break
-                }
+            // oszlopok.classList.remove('hidden')
+            if (bad) {
+                oszlopok.classList.add('hidden')
+                ;(form as HTMLFormElement)?.reset()
             }
         }
-
-        output = output.filter(check_if_one)
-        for (const cucc of output) {
-            if (result[0].includes(cucc)) {
-                const index = result[0].indexOf(cucc)
-                result[1][index]++
-            } else {
-                result[1].push(1)
-                result[0].push(cucc)
-            }
-        }
-        if (other) {
-            return bekker
-        }
-        if (need_to) {
-            for (const element of result[1]) {
-                number_of_oszók *= element + 1
-            }
-            const indexes: number[] = []
-
-            for (let i = 0; i < result[0].length; i++) {
-                indexes.push(0)
-            }
-            const more_indexes: number[][] = []
-            for (let index = 0; index < number_of_oszók; index++) {
-                for (
-                    let i = indexes.length - 1;
-                    indexes.length > i && i >= 0;
-                    i--
-                ) {
-                    const temp = indexes.slice(0, indexes.length)
-
-                    if (array_in_array(temp, more_indexes)) {
-                        more_indexes.push(temp)
-                    }
-
-                    if (
-                        i !== indexes.length - 1 &&
-                        indexes.slice(i + 1, indexes.length).toString() ===
-                            result[1]
-                                .slice(i + 1, result[1].length)
-                                .toString() &&
-                        indexes.slice(i, indexes.length).toString() !==
-                            result[1].slice(i, result[1].length).toString()
-                    ) {
-                        indexes[i]++
-                        for (let j = 0; j < indexes.length; j++) {
-                            if (j > i) {
-                                indexes[j] = 0
-                            }
-                        }
-                    }
-
-                    if (
-                        i === indexes.length - 1 &&
-                        indexes[i] !== result[1][i]
-                    ) {
-                        indexes[i]++
-                    }
-                }
-                if (indexes.toString() === result[1].toString()) {
-                    break
-                }
-            }
-            osztók = more_indexes.map((item) => osztósítás(item, result[0]))
-            osztók = quickSort(osztók)
-        }
-
-        partial_result.push(1)
-        console.log(osztók)
-
-        bekker.number_of_osztók = number_of_oszók
-        bekker.osztók = osztók
-        bekker.output = output
-        bekker.partial_result = partial_result
-        bekker.result = result
-
-        const end = performance.now()
-        console.log(`Execution time: ${end - start} ms`)
-        return bekker
     }
-
     document
         .querySelector('#prime_number_form')
         ?.addEventListener('submit', (e) => {
             e.preventDefault()
-            lnko([12, 6, 24])
             const data = new FormData(e.target as HTMLFormElement)
             const cuccos = prime_number_(
                 Number(Object.fromEntries(data.entries()).prime),
                 false
             )
+            if (Number(Object.fromEntries(data.entries()).prime) === 0) {
+                clear(true)
+            }
             const bal_oldal = document.querySelector('#bal_oldal')
             const jobb_oldal = document.querySelector('#jobb_oldal')
             const summarized = document.querySelector('#summarized')
             const osztócím = document.querySelector('#osztó')
             const osztók_div = document.querySelector('#osztók')
+            document.querySelector('#oszlopok')?.classList.remove('hidden')
+            document.querySelector('#oszlopok')?.classList.add('grid')
             clear(false)
             if (
                 cuccos &&
@@ -242,150 +115,268 @@ onMounted(() => {
                 }
             }
         })
-
-    function prime_numbers(num: number): number {
-        let counter = 0
-        for (let index = 2; index <= Math.sqrt(num); index++) {
-            if (num % index === 0) {
-                counter++
-            }
-        }
-        if (counter === 0) {
-            return num
-        }
-
-        return 0
-    }
-
-    function check_if_one(num: number): boolean {
-        return num !== 0
-    }
-
-    function array_in_array(keresendo: number[], benne: number[][]): boolean {
-        for (const element of benne) {
-            if (element.toString() === keresendo.toString()) {
-                return false
-            }
-        }
-        return true
-    }
-
-    function osztósítás(index: number[], result: number[]): number {
-        let output = 1
-        for (let i = 0; i < index.length; i++) {
-            output *= result[i] ** index[i]
-        }
-        return output
-    }
-
-    function quickSort(arr: number[]): number[] {
-        // Base case: If the array has one or no elements, it is already sorted.
-        if (arr.length <= 1) return arr
-
-        // Choosing the first element in the array as the pivot.
-        const pivot = arr[0]
-        // Creating two empty arrays to store elements less than (left) and greater than (right) the pivot.
-        const left = []
-        const right = []
-
-        // Looping through the array, starting from the second element because the first is the pivot.
-        for (let i = 1; i < arr.length; i++) {
-            // If the current element is smaller than the pivot, push it to the 'left' array.
-            if (arr[i] < pivot) left.push(arr[i])
-            // If the current element is greater than or equal to the pivot, push it to the 'right' array.
-            else right.push(arr[i])
-        }
-
-        // Concatenate the result of recursively sorting the 'left' array, the pivot, and then the 'right' array.
-        // Spread syntax '...' is used to concatenate arrays.
-        return [...quickSort(left), pivot, ...quickSort(right)]
-    }
-    function clear(bad: boolean): void {
-        const bal_oldal = document.querySelector('#bal_oldal')
-        const jobb_oldal = document.querySelector('#jobb_oldal')
-        const summarized = document.querySelector('#summarized')
-        const osztócím = document.querySelector('#osztó')
-        const osztók_div = document.querySelector('#osztók')
-        const form = document.querySelector('#prime_number_form')
-        const oszlopok = document.querySelector('#oszlopok')
-
-        if (
-            bal_oldal &&
-            jobb_oldal &&
-            summarized &&
-            osztócím &&
-            osztók_div &&
-            oszlopok
-        ) {
-            bal_oldal.innerHTML = ''
-            jobb_oldal.innerHTML = ''
-            summarized.innerHTML = ''
-            osztók_div.innerHTML = ''
-            osztócím.innerHTML = ''
-
-            // oszlopok.classList.remove('hidden')
-            if (bad) {
-                oszlopok.classList.add('hidden')
-                ;(form as HTMLFormElement)?.reset()
-            }
-        }
-    }
-
-    function compareArrays(arrays: number[][]): number[] {
-        const output: number[] = []
-        let lowest_length = 0
-        let shortest_array: number[] = []
-        for (const arr of arrays) {
-            if (arr.length > lowest_length) lowest_length = arr.length
-            shortest_array = arr
-        }
-        for (let i = 0; i < shortest_array.length; i++) {
-            const element = shortest_array[i]
-            let count = 0
-            for (let j = 0; j < arrays.length; j++) {
-                const arr = arrays[j]
-                if (arr.includes(element)) count++
-            }
-            if (count >= lowest_length) output.push(element)
-        }
-
-        console.log('output', output)
-
-        return quickSort(output)
-    }
-
-    function lnko(numbers: number[]): number[][] {
-        clear(false)
-        let result: number[][] = [[], []]
-        const felbontott: number[][][] = [[], []]
-        for (const element of numbers) {
-            felbontott[0].push(prime_number_(element, true)!.result[0])
-            felbontott[1].push(prime_number_(element, true)!.result[1])
-        }
-        console.log('felbontott', felbontott)
-        result[0] = compareArrays(felbontott[0])
-
-        if (result[0].length !== 0) {
-            for (const number of result[0]) {
-                let minimum = 10000000
-                for (let i = 0; i < felbontott[0].length; i++) {
-                    const element = felbontott[0][i]
-
-                    if (felbontott[1][i][element.indexOf(number)] < minimum) {
-                        minimum = felbontott[1][i][element.indexOf(number)]
-                    }
-                }
-                result[1].push(minimum)
-            }
-        } else {
-            result = [[1], [1]]
-        }
-        console.log('result ([12, 13, 24,48])', result)
-        return result
-    }
 })
 </script>
+<script lang="ts">
+interface prime {
+    result: number[][]
+    output: number[]
+    osztók: number[]
+    number_of_osztók: number
+    partial_result: number[]
+}
+export function compareArrays(arrays: number[][]): number[] {
+    const output: number[] = []
+    let lowest_length = 0
+    let shortest_array: number[] = []
+    for (const arr of arrays) {
+        if (arr.length > lowest_length) lowest_length = arr.length
+        shortest_array = arr
+    }
+    for (let i = 0; i < shortest_array.length; i++) {
+        const element = shortest_array[i]
+        let count = 0
+        for (let j = 0; j < arrays.length; j++) {
+            const arr = arrays[j]
+            if (arr.includes(element)) count++
+        }
+        if (count >= lowest_length) output.push(element)
+    }
 
+    console.log('output', output)
+
+    return output
+}
+
+export function lnko(numbers: number[]): number[][] {
+    let result: number[][] = [[], []]
+    const felbontott: number[][][] = [[], []]
+    for (const element of numbers) {
+        const egyeske = prime_number_(element, true)
+        if (egyeske) {
+            felbontott[0].push(egyeske.result[0])
+            felbontott[1].push(egyeske.result[1])
+        }
+    }
+    console.log('felbontott', felbontott)
+    result[0] = compareArrays(felbontott[0])
+
+    if (result[0].length !== 0) {
+        for (const number of result[0]) {
+            let minimum = 10000000
+            for (let i = 0; i < felbontott[0].length; i++) {
+                const element = felbontott[0][i]
+
+                if (felbontott[1][i][element.indexOf(number)] < minimum) {
+                    minimum = felbontott[1][i][element.indexOf(number)]
+                }
+            }
+            result[1].push(minimum)
+        }
+    } else {
+        result = [[1], [1]]
+    }
+    console.log('result ([12, 13, 24,48])', result)
+    return result
+}
+
+export function prime_number_(
+    inputnum: number,
+    other: boolean
+): prime | undefined {
+    const bekker: prime = {
+        result: [[], []],
+        output: [],
+        osztók: [],
+        number_of_osztók: 1,
+        partial_result: [],
+    }
+    const input = Math.abs(inputnum)
+    let num = input
+    let prime_numbers_under_num = []
+    let need_to = true
+
+    const result: number[][] = [[], []]
+    let output = []
+    const partial_result = []
+    let osztók: number[] = []
+    let number_of_oszók = 1
+
+    if (inputnum === 0) {
+        return undefined
+    }
+
+    const start = performance.now()
+
+    if (prime_numbers(num) === num) {
+        output.push(num)
+        partial_result.push(num)
+        need_to = false
+        osztók.push(1)
+        osztók.push(num)
+        number_of_oszók += 1
+    }
+    if (num === 1) {
+        need_to = false
+        osztók = [1]
+        number_of_oszók = 1
+    }
+    if (need_to) {
+        for (let index = 2; index < num / 2 + 1; index++) {
+            prime_numbers_under_num.push(prime_numbers(index))
+        }
+
+        prime_numbers_under_num.push(prime_numbers(num))
+        prime_numbers_under_num = prime_numbers_under_num.filter(check_if_one)
+
+        for (let index = 0; index < prime_numbers_under_num.length; index++) {
+            const element = prime_numbers_under_num[index]
+
+            while (num % element === 0) {
+                output.push(element)
+                partial_result.push(num)
+                num /= element
+            }
+            if (num === 1) {
+                break
+            }
+        }
+    }
+
+    output = output.filter(check_if_one)
+    for (const cucc of output) {
+        if (result[0].includes(cucc)) {
+            const index = result[0].indexOf(cucc)
+            result[1][index]++
+        } else {
+            result[1].push(1)
+            result[0].push(cucc)
+        }
+    }
+    if (other) {
+        return bekker
+    }
+    if (need_to) {
+        for (const element of result[1]) {
+            number_of_oszók *= element + 1
+        }
+        const indexes: number[] = []
+
+        for (let i = 0; i < result[0].length; i++) {
+            indexes.push(0)
+        }
+        const more_indexes: number[][] = []
+        for (let index = 0; index < number_of_oszók; index++) {
+            for (
+                let i = indexes.length - 1;
+                indexes.length > i && i >= 0;
+                i--
+            ) {
+                const temp = indexes.slice(0, indexes.length)
+
+                if (array_in_array(temp, more_indexes)) {
+                    more_indexes.push(temp)
+                }
+
+                if (
+                    i !== indexes.length - 1 &&
+                    indexes.slice(i + 1, indexes.length).toString() ===
+                        result[1].slice(i + 1, result[1].length).toString() &&
+                    indexes.slice(i, indexes.length).toString() !==
+                        result[1].slice(i, result[1].length).toString()
+                ) {
+                    indexes[i]++
+                    for (let j = 0; j < indexes.length; j++) {
+                        if (j > i) {
+                            indexes[j] = 0
+                        }
+                    }
+                }
+
+                if (i === indexes.length - 1 && indexes[i] !== result[1][i]) {
+                    indexes[i]++
+                }
+            }
+            if (indexes.toString() === result[1].toString()) {
+                break
+            }
+        }
+        osztók = more_indexes.map((item) => osztósítás(item, result[0]))
+        osztók = quickSort(osztók)
+    }
+
+    partial_result.push(1)
+    console.log(osztók)
+
+    bekker.number_of_osztók = number_of_oszók
+    bekker.osztók = osztók
+    bekker.output = output
+    bekker.partial_result = partial_result
+    bekker.result = result
+
+    const end = performance.now()
+    console.log(`Execution time: ${end - start} ms`)
+    return bekker
+}
+
+function prime_numbers(num: number): number {
+    let counter = 0
+    for (let index = 2; index <= Math.sqrt(num); index++) {
+        if (num % index === 0) {
+            counter++
+        }
+    }
+    if (counter === 0) {
+        return num
+    }
+
+    return 0
+}
+
+function check_if_one(num: number): boolean {
+    return num !== 0
+}
+
+function array_in_array(keresendo: number[], benne: number[][]): boolean {
+    for (const element of benne) {
+        if (element.toString() === keresendo.toString()) {
+            return false
+        }
+    }
+    return true
+}
+
+function osztósítás(index: number[], result: number[]): number {
+    let output = 1
+    for (let i = 0; i < index.length; i++) {
+        output *= result[i] ** index[i]
+    }
+    return output
+}
+
+function quickSort(arr: number[]): number[] {
+    // Base case: If the array has one or no elements, it is already sorted.
+    if (arr.length <= 1) return arr
+
+    // Choosing the first element in the array as the pivot.
+    const pivot = arr[0]
+    // Creating two empty arrays to store elements less than (left) and greater than (right) the pivot.
+    const left = []
+    const right = []
+
+    // Looping through the array, starting from the second element because the first is the pivot.
+    for (let i = 1; i < arr.length; i++) {
+        // If the current element is smaller than the pivot, push it to the 'left' array.
+        if (arr[i] < pivot) left.push(arr[i])
+        // If the current element is greater than or equal to the pivot, push it to the 'right' array.
+        else right.push(arr[i])
+    }
+
+    // Concatenate the result of recursively sorting the 'left' array, the pivot, and then the 'right' array.
+    // Spread syntax '...' is used to concatenate arrays.
+    return [...quickSort(left), pivot, ...quickSort(right)]
+}
+</script>
 <template>
     <Title>Ampix Matek(Gyári munka)</Title>
 
