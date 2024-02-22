@@ -323,7 +323,7 @@ onMounted(() => {
             osztók_div.innerHTML = ''
             osztócím.innerHTML = ''
 
-            oszlopok.classList.remove('hidden')
+            // oszlopok.classList.remove('hidden')
             if (bad) {
                 oszlopok.classList.add('hidden')
                 ;(form as HTMLFormElement)?.reset()
