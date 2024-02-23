@@ -36,6 +36,7 @@ onMounted(() => {
         .querySelector('#prime_number_form')
         ?.addEventListener('submit', (e) => {
             e.preventDefault()
+
             const data = new FormData(e.target as HTMLFormElement)
             const cuccos = prime_number_(
                 Number(Object.fromEntries(data.entries()).prime),
@@ -151,12 +152,18 @@ export function compareArrays(arrays: number[][]): number[] {
 export function lnko(numbers: number[]): number[][] {
     let result: number[][] = [[], []]
     const felbontott: number[][][] = [[], []]
+
     for (const element of numbers) {
         const egyeske = prime_number_(element, true)
+        console.log(egyeske)
         if (egyeske) {
             felbontott[0].push(egyeske.result[0])
             felbontott[1].push(egyeske.result[1])
         }
+    }
+    if (numbers.length === 1) {
+        result = [felbontott[0][0], felbontott[1][0]]
+        return result
     }
     console.log('felbontott', felbontott)
     result[0] = compareArrays(felbontott[0])
@@ -254,6 +261,7 @@ export function prime_number_(
         }
     }
     if (other) {
+        bekker.result = result
         return bekker
     }
     if (need_to) {
