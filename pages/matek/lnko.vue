@@ -103,7 +103,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { lnko, lkkt } from './index.vue'
+import { lnko, lkkt } from './prime.vue'
 import { onMounted } from 'vue'
 console.log(lkkt([12, 10]))
 onMounted(() => {
