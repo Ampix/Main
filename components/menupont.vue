@@ -17,6 +17,7 @@
 <script lang="ts" setup>
 const { x, description, title } = defineProps(['x', 'description', 'title'])
 const router = useRouter()
+console.log(router)
 
 onMounted(() => {
     const id = `btn${x}`
@@ -24,7 +25,7 @@ onMounted(() => {
 
     btn?.addEventListener('click', (e) => {
         e.preventDefault()
-        router.push(x)
+        router.push(`/matek/${x}`)
     })
 })
 </script>
