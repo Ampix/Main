@@ -1,58 +1,57 @@
 <template>
+    <Navigationbar></Navigationbar>
     <Title>Legnagyobb közös osztó</Title>
 
-    <div
-        class="text-white font-mono grid grid-cols-2 grid-rows-1 h-screen flex mx-4"
-    >
-        <div
-            class="bg-gray-500 py-5 text-center my-auto rounded-xl w-auto mx-4"
-        >
-            <h1 class="text-3xl mb-3 font-semibold">
-                Legnagyobb közös osztó kiszámitása
-            </h1>
+    <!-- <div
+        class="text-white font-mono grid grid-cols-2 grid-rows-1 h-screen flex mx-4" -->
+    <!-- > -->
+    <div class="bg-gray-500 py-5 text-center my-auto rounded-xl w-auto">
+        <h1 class="text-3xl mb-3 font-semibold">
+            Legnagyobb közös osztó kiszámitása
+        </h1>
 
-            <form id="lnko_form">
-                <input
-                    class="bg-gray-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2"
-                    type="number"
-                    name="lnko_1"
-                    id="lnko_1"
-                    placeholder="1. szám"
-                />
-                <input
-                    class="bg-gray-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2 my-1"
-                    type="number"
-                    name="lnko_2"
-                    id="lnko_2"
-                    placeholder="2. szám"
-                />
-                <div id="lnko_buttons">
-                    <button
-                        id="lnko_minus"
-                        class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2"
-                    >
-                        -
-                    </button>
-                    <button
-                        type="submit"
-                        id="feldolg"
-                        class="bg-gray-400 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-gray-600 mx-2 break-all"
-                    >
-                        Feldolgozás
-                    </button>
-                    <button
-                        id="lnko_plussz"
-                        class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2 group"
-                    >
-                        &#x2B;
-                    </button>
-                </div>
-            </form>
-            <div id="lnko_summarized"></div>
+        <form id="lnko_form">
+            <input
+                class="bg-gray-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2"
+                type="number"
+                name="lnko_1"
+                id="lnko_1"
+                placeholder="1. szám"
+            />
+            <input
+                class="bg-gray-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2 my-1"
+                type="number"
+                name="lnko_2"
+                id="lnko_2"
+                placeholder="2. szám"
+            />
+            <div id="lnko_buttons">
+                <button
+                    id="lnko_minus"
+                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2"
+                >
+                    -
+                </button>
+                <button
+                    type="submit"
+                    id="feldolg"
+                    class="bg-gray-400 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-gray-600 mx-2 break-all"
+                >
+                    Feldolgozás
+                </button>
+                <button
+                    id="lnko_plussz"
+                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2 group"
+                >
+                    &#x2B;
+                </button>
+            </div>
+        </form>
+        <div id="lnko_summarized"></div>
 
-            <div id="lnko_error"></div>
-        </div>
-        <div
+        <div id="lnko_error"></div>
+    </div>
+    <!-- <div
             class="bg-gray-500 py-5 text-center my-auto rounded-xl w-auto mx-4"
         >
             <h1 class="text-3xl mb-3 font-semibold">
@@ -99,13 +98,12 @@
             <div id="lkkt_summarized"></div>
 
             <div id="lkkt_error"></div>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 </template>
 <script setup lang="ts">
 import { lnko, lkkt } from './prime.vue'
 import { onMounted } from 'vue'
-console.log(lkkt([12, 10]))
 onMounted(() => {
     const lnko_plus = document.querySelector('#lnko_plussz')
     const lnko_form = document.querySelector('#lnko_form')

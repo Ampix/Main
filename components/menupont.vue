@@ -1,24 +1,30 @@
 <template>
-    <div class="">
+    <div class="grid grid-cols-2 text-center gap-[150px]">
         <button
-            class="mt-2 ml-1 text-center text-3xl p-10 transition-transform duration-1000 hover: bg-blue-500 rounded-3xl text-white group-hover:translate-x-0 translate-x-[-100px] hover:bg-blue-950"
-            id="btn"
+            :id="`btn${x}`"
+            class="group-hover:translate-x-0 translate-x-[-100px] mx-[12px] my-2 text-3xl w-[104px] h-[104px] bg-blue-500 rounded-3xl text-white hover:bg-blue-950 transition-all duration-700"
         >
-            x|y
-            <span
-                class="group-hover:scale-100 absolute w-auto p-3 m-3 mx-20 min-w-max left-14 rounded-md text-white bg-gray-600 text-xl font-bold transition-all duration-100 scale-0"
-                >Prímtényezős felbontás</span
-            >
+            {{ title }}
         </button>
+        <span
+            class="group-hover:opacity-100 group-hover:translate-x-0 transition-all translate-x-[-1000px] opacity-0 text-white rounded-md bg-gray-600 duration-500 w-52 h-fit mt-6 p-2 font-bold text-lg"
+        >
+            {{ description }}
+        </span>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+const { x, description, title } = defineProps(['x', 'description', 'title'])
+const router = useRouter()
+
 onMounted(() => {
-    const btn = document.querySelector('#btn')
+    const id = `btn${x}`
+    const btn = document.querySelector(`#${id}`)
+
     btn?.addEventListener('click', (e) => {
         e.preventDefault()
+        router.push(x)
     })
 })
 </script>
