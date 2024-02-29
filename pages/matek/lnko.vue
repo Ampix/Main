@@ -110,6 +110,9 @@ onMounted(() => {
     const lnko_minus = document.querySelector('#lnko_minus')
     const lnko_buttons = document.querySelector('#lnko_buttons')
     let lnko_index = 3
+    if (lnko_form) {
+        lnko_index = lnko_form.getElementsByTagName('*').length - 3
+    }
 
     lnko_minus?.addEventListener('click', (e) => {
         e.preventDefault()

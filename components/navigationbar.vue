@@ -1,6 +1,6 @@
 <template>
     <div
-        class="fixed h-screen w-6 bg-gray-600 hover:w-32 transition-all duration-700 group m-0"
+        class="fixed h-screen w-6 bg-gray-600 hover:w-32 transition-all duration-700 group m-0 p-0"
         id="menu"
     >
         <Menupont

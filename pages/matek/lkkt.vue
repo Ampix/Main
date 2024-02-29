@@ -1,21 +1,21 @@
 <template>
     <Title>LegKisebb Közös Töbszörös</Title>
     <Navigationbar></Navigationbar>
-    <div class="bg-gray-500 py-5 text-center rounded-xl w-auto">
+    <div class="bg-red-700 py-5 text-center rounded-xl w-auto">
         <h1 class="text-3xl mb-3 font-semibold">
             Legkisebb közös töbszörös kiszámitása
         </h1>
 
         <form id="lkkt_form">
             <input
-                class="bg-gray-400 w-[19rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2"
+                class="bg-red-500 w-[19rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-red-900 mx-2"
                 type="number"
                 name="lkkt_1"
                 id="lkkt_1"
                 placeholder="1. szám"
             />
             <input
-                class="bg-gray-400 w-[19rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2 my-1"
+                class="bg-red-500 w-[19rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-red-900 mx-2 my-1"
                 type="number"
                 name="lkkt_2"
                 id="lkkt_2"
@@ -24,20 +24,20 @@
             <div id="lkkt_buttons" class="mt-2">
                 <button
                     id="lkkt_minus"
-                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2 my-2"
+                    class="bg-red-500 px-5 py-1 rounded-lg text-xl font-bold hover:bg-red-900 mx-2 my-2"
                 >
                     -
                 </button>
                 <button
                     type="submit"
                     id="feldolg"
-                    class="bg-gray-400 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-gray-600 mx-2 my-2"
+                    class="bg-red-500 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-red-900 mx-2 my-2"
                 >
                     Feldolgozás
                 </button>
                 <button
                     id="lkkt_plussz"
-                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2 group my-2"
+                    class="bg-red-500 px-5 py-1 rounded-lg text-xl font-bold hover:bg-red-900 mx-2 group my-2"
                 >
                     &#x2B;
                 </button>
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { lnko, lkkt } from './prime.vue'
+import { lkkt } from './prime.vue'
 import { onMounted } from 'vue'
 onMounted(() => {
     const lkkt_plus = document.querySelector('#lkkt_plussz')
@@ -58,11 +58,14 @@ onMounted(() => {
     const lkkt_minus = document.querySelector('#lkkt_minus')
     const lkkt_buttons = document.querySelector('#lkkt_buttons')
     let lkkt_index = 3
+    if (lkkt_form) {
+        lkkt_index = lkkt_form.getElementsByTagName('*').length - 3
+    }
 
     lkkt_minus?.addEventListener('click', (e) => {
         e.preventDefault()
         const last = document.querySelector(`#lkkt_${lkkt_index - 1}`)
-        if (last && last.id !== `lkkt_1`) {
+        if (last && last.id !== `lkkt_2`) {
             last.remove()
             lkkt_index--
         }
@@ -74,16 +77,16 @@ onMounted(() => {
         const pista = document.createElement('input')
 
         pista.classList.add(
-            'bg-gray-400',
-            'w-[20rem]',
+            'bg-red-500',
+            'w-[19rem]',
             'placeholder:text-white',
             'text-center',
             'text-xl',
             'rounded-lg',
             'py-1',
-            'focus:bg-gray-600',
-            'mx-2.5',
-            'my-1'
+            'focus:bg-red-900',
+            'mx-2',
+            'my-2'
         )
         pista.name = `lkkt_${lkkt_index}`
         pista.id = `lkkt_${lkkt_index}`
@@ -171,5 +174,4 @@ onMounted(() => {
     })
 })
 </script>
-
 <style></style>
