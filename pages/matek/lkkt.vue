@@ -50,7 +50,6 @@
 </template>
 
 <script lang="ts" setup>
-import { lkkt } from './prime.vue'
 import { onMounted } from 'vue'
 onMounted(() => {
     const lkkt_plus = document.querySelector('#lkkt_plussz')
@@ -123,7 +122,7 @@ onMounted(() => {
 
         console.log(számok)
 
-        const result = lkkt(számok)
+        const result = useLkkt(számok)
         let finalResult = 1
         for (let i = 0; i < result[0].length; i++) {
             const element = result[0][i]
