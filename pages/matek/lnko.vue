@@ -2,22 +2,14 @@
     <Navigationbar></Navigationbar>
     <Title>Legnagyobb közös osztó</Title>
 
-    <!-- <div
-        class="text-white font-mono grid grid-cols-2 grid-rows-1 h-screen flex mx-4" -->
-    <!-- > -->
     <div class="bg-gray-500 py-5 text-center my-auto rounded-xl w-auto">
         <h1 class="text-3xl mb-3 font-semibold">
             Legnagyobb közös osztó kiszámitása
         </h1>
 
         <form id="lnko_form">
-            <input
-                class="bg-gray-400 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-gray-600 mx-2"
-                type="number"
-                name="lnko_1"
-                id="lnko_1"
-                placeholder="1. szám"
-            />
+            <lnko_input v-bind:index="1" />
+            <lnko_input v-bind:index="2" />
             <div id="lnko_buttons">
                 <button
                     id="lnko_minus"
@@ -42,19 +34,21 @@
         </form>
         <div id="lnko_summarized"></div>
 
-        <div id="lnko_error"></div>
+        <!-- <div id="lnko_error" class="text-9xl">
+            {{ exported_index }}
+        </div> -->
     </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+let lnko_index = 3
+let exported_index = ref(lnko_index)
 
 onMounted(() => {
     const lnko_plus = document.querySelector('#lnko_plussz')
     const lnko_form = document.querySelector('#lnko_form')
     const lnko_minus = document.querySelector('#lnko_minus')
     const lnko_buttons = document.querySelector('#lnko_buttons')
-    let lnko_index = 3
-    let exported_index: Ref<number> = ref(lnko_index)
     if (lnko_form) {
         lnko_index = lnko_form.getElementsByTagName('*').length - 3
     }
@@ -170,3 +164,5 @@ onMounted(() => {
     })
 })
 </script>
+
+<script></script>
