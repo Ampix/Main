@@ -9,5 +9,10 @@ export default defineNuxtConfig({
 	},
 	devtools: { enabled: true },
 	modules: ["@formkit/auto-animate", "@nuxtjs/tailwindcss", "nuxt-icon"],
-	components: true,
+	components: [
+		{
+			path: "~/components",
+			pathPrefix: false,
+		},
+	],
 });

@@ -8,8 +8,8 @@
         </h1>
 
         <form id="lnko_form">
-            <lnko_input v-bind:index="1" />
-            <lnko_input v-bind:index="2" />
+            <LnkoInput v-bind:index="1" />
+            <LnkoInput v-bind:index="2" />
             <div id="lnko_buttons">
                 <button
                     id="lnko_minus"
@@ -41,14 +41,15 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-let lnko_index = 3
-let exported_index = ref(lnko_index)
+import { LnkoInput } from '#components'
+import { resolveDynamicComponent } from 'vue'
 
 onMounted(() => {
     const lnko_plus = document.querySelector('#lnko_plussz')
     const lnko_form = document.querySelector('#lnko_form')
     const lnko_minus = document.querySelector('#lnko_minus')
     const lnko_buttons = document.querySelector('#lnko_buttons')
+    let lnko_index = 3
     if (lnko_form) {
         lnko_index = lnko_form.getElementsByTagName('*').length - 3
     }
@@ -66,6 +67,7 @@ onMounted(() => {
         e.preventDefault()
 
         const jozsi = document.createElement('input')
+        let sanyi = resolveComponent('LnkoInput')
 
         jozsi.classList.add(
             'bg-gray-400',
