@@ -24,7 +24,7 @@
         class="rounded-full bg-blue-900 text-center flex m-auto p-10 text-white text-3xl"
         id="btn_menu"
     >
-        Menü
+        >
     </button>
 </template>
 
@@ -43,7 +43,6 @@ onMounted(() => {
             navigationbar?.classList.remove('translate-x-0')
             navigationbar?.classList.add('translate-x-[-128px]')
         }
-        console.log(navigationbar?.classList)
     })
 })
 </script>
