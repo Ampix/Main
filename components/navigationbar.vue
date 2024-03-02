@@ -1,8 +1,9 @@
 <template>
     <div
-        class="fixed h-screen w-6 bg-gray-600 hover:w-32 transition-all duration-700 group m-0 p-0"
+        class="fixed h-screen bg-gray-600 translate-x-[-128px] x-0 transition-all w-32 duration-700 m-0 p-0"
         id="menu"
     >
+        <Menupont :x="``" :description="`Főmenü`" :title="`🛖`"></Menupont>
         <Menupont
             :x="`prime`"
             :description="`Prímtényezős felbontás`"
@@ -10,17 +11,41 @@
         ></Menupont>
         <Menupont
             :x="`lnko`"
-            :description="`LegNagyobb Közös Osztó`"
-            :title="`Lnko`"
+            :description="`Legnagyobb Közös Osztó`"
+            :title="`LNKO`"
         ></Menupont>
         <Menupont
             :x="`lkkt`"
-            :description="`LegKisebb Közös Töbszörös`"
-            :title="`Lkkt`"
+            :description="`Legkisebb Közös Töbszörös`"
+            :title="`LKKT`"
         ></Menupont>
     </div>
+    <button
+        class="rounded-full bg-blue-900 text-center flex m-auto p-10 text-white text-3xl"
+        id="btn_menu"
+    >
+        Menü
+    </button>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+onMounted(() => {
+    let state = false
+    const btn = document.querySelector('#btn_menu')
+    const navigationbar = document.querySelector('#menu')
+    btn?.addEventListener('click', (e) => {
+        e.preventDefault()
+        state = !state
+        if (state) {
+            navigationbar?.classList.remove('translate-x-[-128px]')
+            navigationbar?.classList.add('translate-x-0')
+        } else {
+            navigationbar?.classList.remove('translate-x-0')
+            navigationbar?.classList.add('translate-x-[-128px]')
+        }
+        console.log(navigationbar?.classList)
+    })
+})
+</script>
 
 <style></style>

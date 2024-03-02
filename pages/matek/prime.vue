@@ -327,7 +327,6 @@ function quickSort(arr: number[]): number[] {
 </script>
 <template>
     <Title>Ampix Matek(Gyári munka)</Title>
-    <Navigationbar></Navigationbar>
     <div class="text-white font-mono">
         <div class="text-center items-center justify-center">
             <div class="bg-blue-500 py-5">
@@ -382,4 +381,5 @@ function quickSort(arr: number[]): number[] {
             </div>
         </div>
     </div>
+    <Navigationbar></Navigationbar>
 </template>

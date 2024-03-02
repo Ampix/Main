@@ -2,31 +2,43 @@
     <Navigationbar></Navigationbar>
     <Title>Legnagyobb közös osztó</Title>
 
-    <div class="bg-gray-500 py-5 text-center my-auto rounded-xl w-auto">
+    <div class="bg-green-700 py-5 text-center my-auto w-auto">
         <h1 class="text-3xl mb-3 font-semibold">
             Legnagyobb közös osztó kiszámitása
         </h1>
 
         <form id="lnko_form">
-            <LnkoInput v-bind:index="1" />
-            <LnkoInput v-bind:index="2" />
+            <input
+                class="bg-green-800 focus:bg-green-950 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 mx-2 my-1"
+                type="number"
+                :name="`lnko_${1}`"
+                :id="`lnko_${1}`"
+                :placeholder="`${1}. szám`"
+            />
+            <input
+                class="bg-green-800 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-green-950 mx-2 my-1"
+                type="number"
+                :name="`lnko_${2}`"
+                :id="`lnko_${2}`"
+                :placeholder="`${2}. szám`"
+            />
             <div id="lnko_buttons">
                 <button
                     id="lnko_minus"
-                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2"
+                    class="bg-green-800 hover:bg-green-950 px-5 py-1 rounded-lg text-xl font-bold mx-2"
                 >
                     -
                 </button>
                 <button
                     type="submit"
                     id="feldolg"
-                    class="bg-gray-400 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 hover:bg-gray-600 mx-2 break-all"
+                    class="bg-green-800 hover:bg-green-950 px-10 py-1 rounded-lg text-xl font-bold mt-3 sm:mt-3 mx-2 break-all"
                 >
                     Feldolgozás
                 </button>
                 <button
                     id="lnko_plussz"
-                    class="bg-gray-400 px-5 py-1 rounded-lg text-xl font-bold hover:bg-gray-600 mx-2 group"
+                    class="bg-green-800 hover:bg-green-950 px-5 py-1 rounded-lg text-xl font-bold mx-2 group"
                 >
                     &#x2B;
                 </button>
@@ -41,17 +53,16 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { LnkoInput } from '#components'
-import { resolveDynamicComponent } from 'vue'
 
 onMounted(() => {
     const lnko_plus = document.querySelector('#lnko_plussz')
     const lnko_form = document.querySelector('#lnko_form')
     const lnko_minus = document.querySelector('#lnko_minus')
     const lnko_buttons = document.querySelector('#lnko_buttons')
+    const lnko_inputs = document.querySelector('#lnko_inputs')
     let lnko_index = 3
-    if (lnko_form) {
-        lnko_index = lnko_form.getElementsByTagName('*').length - 3
+    if (lnko_inputs) {
+        lnko_index = lnko_inputs.getElementsByTagName('*').length + 1
     }
 
     lnko_minus?.addEventListener('click', (e) => {
@@ -67,17 +78,16 @@ onMounted(() => {
         e.preventDefault()
 
         const jozsi = document.createElement('input')
-        let sanyi = resolveComponent('LnkoInput')
 
         jozsi.classList.add(
-            'bg-gray-400',
+            'bg-green-800',
+            'focus:bg-green-950',
             'w-[20rem]',
             'placeholder:text-white',
             'text-center',
             'text-xl',
             'rounded-lg',
             'py-1',
-            'focus:bg-gray-600',
             'mx-2.5',
             'my-1'
         )
@@ -89,6 +99,7 @@ onMounted(() => {
         lnko_index++
 
         lnko_form?.insertBefore(jozsi, lnko_buttons)
+        // lnko_form?.insertBefore(sanyi, lnko_buttons)
     })
 
     lnko_form?.addEventListener('submit', (e) => {
