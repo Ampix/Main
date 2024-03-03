@@ -3,7 +3,7 @@
         class="fixed h-screen bg-gray-600 translate-x-[-128px] x-0 transition-all w-32 duration-700 m-0 p-0"
         id="menu"
     >
-        <Menupont :x="``" :description="`Főmenü`" :title="`🛖`"></Menupont>
+        <Menupont :x="``" :description="`Főmenü`" :title="``"></Menupont>
         <Menupont
             :x="`prime`"
             :description="`Prímtényezős felbontás`"
@@ -21,7 +21,7 @@
         ></Menupont>
     </div>
     <button
-        class="rounded-full bg-blue-900 text-center flex m-auto p-10 text-white text-3xl"
+        class="rounded-full transition-all bg-gray-600 duration-700 text-center fixed inset-y-1/2 m-auto w-20 text-white text-3xl items-center h-20 opacity-25 hover:opacity-100"
         id="btn_menu"
     >
         >
@@ -39,9 +39,13 @@ onMounted(() => {
         if (state) {
             navigationbar?.classList.remove('translate-x-[-128px]')
             navigationbar?.classList.add('translate-x-0')
+            btn?.classList.remove('translate-x-0', 'opacity-25')
+            btn?.classList.add('translate-x-[128px]', 'opacity-100')
         } else {
             navigationbar?.classList.remove('translate-x-0')
             navigationbar?.classList.add('translate-x-[-128px]')
+            btn?.classList.remove('translate-x-[128px]', 'opacity-100')
+            btn?.classList.add('translate-x-0', 'opacity-25')
         }
     })
 })

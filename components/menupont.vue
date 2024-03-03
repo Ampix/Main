@@ -4,7 +4,9 @@
             :id="`btn${x}`"
             class="mx-[12px] my-2 text-3xl w-[104px] h-[104px] bg-blue-500 rounded-3xl text-white duration-300 hover:bg-blue-950 transition-all"
         >
-            {{ title }}
+            <div v-if="title">
+                {{ title }}
+            </div>
         </button>
         <span
             :id="`ds${x}`"

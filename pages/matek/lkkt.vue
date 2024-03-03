@@ -89,7 +89,6 @@ onMounted(() => {
         )
         pista.name = `lkkt_${lkkt_index}`
         pista.id = `lkkt_${lkkt_index}`
-        console.log(pista.id)
         pista.placeholder = `${lkkt_index}. szám`
         pista.type = 'number'
         lkkt_index++
@@ -173,4 +172,3 @@ onMounted(() => {
     })
 })
 </script>
-<style></style>

@@ -11,16 +11,16 @@
             <input
                 class="bg-green-800 focus:bg-green-950 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 mx-2 my-1"
                 type="number"
-                :name="`lnko_${1}`"
-                :id="`lnko_${1}`"
-                :placeholder="`${1}. szám`"
+                name="lnko_1"
+                id="lnko_1"
+                placeholder="1. szám"
             />
             <input
                 class="bg-green-800 w-[20rem] placeholder:text-white text-center text-xl rounded-lg py-1 focus:bg-green-950 mx-2 my-1"
                 type="number"
-                :name="`lnko_${2}`"
-                :id="`lnko_${2}`"
-                :placeholder="`${2}. szám`"
+                name="lnko_2"
+                id="lnko_2"
+                placeholder="2. szám"
             />
             <div id="lnko_buttons">
                 <button
@@ -52,23 +52,22 @@
     </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 
 onMounted(() => {
     const lnko_plus = document.querySelector('#lnko_plussz')
     const lnko_form = document.querySelector('#lnko_form')
     const lnko_minus = document.querySelector('#lnko_minus')
     const lnko_buttons = document.querySelector('#lnko_buttons')
-    const lnko_inputs = document.querySelector('#lnko_inputs')
     let lnko_index = 3
-    if (lnko_inputs) {
-        lnko_index = lnko_inputs.getElementsByTagName('*').length + 1
+    if (lnko_form) {
+        lnko_index = lnko_form.getElementsByTagName('*').length - 3
     }
 
     lnko_minus?.addEventListener('click', (e) => {
         e.preventDefault()
         const last = document.querySelector(`#lnko_${lnko_index - 1}`)
-        if (last && last.id !== `lnko_1`) {
+        if (last && last.id !== `lnko_2`) {
             last.remove()
             lnko_index--
         }
@@ -93,13 +92,11 @@ onMounted(() => {
         )
         jozsi.name = `lnko_${lnko_index}`
         jozsi.id = `lnko_${lnko_index}`
-        console.log(jozsi.id)
         jozsi.placeholder = `${lnko_index}. szám`
         jozsi.type = 'number'
         lnko_index++
 
         lnko_form?.insertBefore(jozsi, lnko_buttons)
-        // lnko_form?.insertBefore(sanyi, lnko_buttons)
     })
 
     lnko_form?.addEventListener('submit', (e) => {
@@ -177,5 +174,3 @@ onMounted(() => {
     })
 })
 </script>
-
-<script></script>
