@@ -10,7 +10,7 @@
         </button>
         <span
             :id="`ds${x}`"
-            class="transition-all size-0 w-52 h-fit mt-6 p-2 opacity-0 text-white rounded-md bg-gray-600 duration-300 font-bold text-lg"
+            class="transition-all size-0 w-52 h-fit mt-6 p-2 opacity-0 text-white rounded-md bg-gray-700 duration-300 font-bold text-lg"
         >
             {{ description }}
         </span>

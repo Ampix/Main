@@ -1,4 +1,10 @@
 <template>
+    <button
+        class="rounded-full transition-all bg-gray-600 duration-700 text-center fixed inset-y-1/2 m-auto w-20 text-white text-3xl items-center h-20 opacity-25 hover:opacity-100"
+        id="btn_menu"
+    >
+        >
+    </button>
     <div
         class="fixed h-screen bg-gray-600 translate-x-[-128px] x-0 transition-all w-32 duration-700 m-0 p-0"
         id="menu"
@@ -20,12 +26,6 @@
             :title="`LKKT`"
         ></Menupont>
     </div>
-    <button
-        class="rounded-full transition-all bg-gray-600 duration-700 text-center fixed inset-y-1/2 m-auto w-20 text-white text-3xl items-center h-20 opacity-25 hover:opacity-100"
-        id="btn_menu"
-    >
-        >
-    </button>
 </template>
 
 <script lang="ts" setup>
