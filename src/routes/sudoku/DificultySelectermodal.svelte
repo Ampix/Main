@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	export let shown: boolean;
+	export let errorMesseage:string;
 	let modal: HTMLDivElement;
 	let outerModal: HTMLDivElement;
 	onMount(() => {
@@ -8,6 +9,7 @@
 			e.preventDefault();
 			if (e.target === outerModal) {
 				shown = false;
+				errorMesseage="Nem választottál semmilyen módot"
 			}
 		});
 	});
@@ -25,12 +27,12 @@
 			: 'h-0 w-0'} trainsition-all m-auto grid grid-rows-4 content-stretch overflow-auto rounded-md bg-gray-500 duration-200"
 		bind:this={modal}
 	>
-		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 text-center text-4xl text-white">Easy</div>
-		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 text-center text-4xl text-white">
+		<div class=" mx-1 my-4 flex justify-center items-center rounded-2xl bg-gray-400 py-2 text-center text-4xl text-white">Easy</div>
+		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 flex justify-center items-center text-center text-4xl text-white">
 			Normal
 		</div>
-		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 text-center text-4xl text-white">Hard</div>
-		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 text-center text-4xl text-white">
+		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 flex justify-center items-center text-center text-4xl text-white">Hard</div>
+		<div class=" mx-1 my-4 rounded-2xl bg-gray-400 py-2 flex justify-center items-center text-center text-4xl text-white">
 			Extreme
 		</div>
 	</div>
