@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import '$lib/settings.svg';
 	import Modal from './DificultySelectermodal.svelte';
+
+	let shown = false;
 	let navigationBar: HTMLDivElement;
 	let NewMatch: HTMLDivElement;
 	let Settings: HTMLDivElement;
@@ -9,11 +11,8 @@
 	onMount(() => {
 		NewMatch.addEventListener('click', (e) => {
 			e.preventDefault();
+			shown = true;
 		});
-		// navigationBar.onmouseenter = function hoverNavigationBar(e) {
-		// 	navigationBar.classList.remove('bg-blue-700');
-		// 	navigationBar.classList.add('bg-black');
-		// };
 	});
 </script>
 
@@ -38,5 +37,5 @@
 		</div>
 	</div>
 	<slot></slot>
-	<Modal></Modal>
+	<Modal bind:shown></Modal>
 </div>
