@@ -4,6 +4,7 @@
 	import Modal from './DificultySelectermodal.svelte';
 
 	let shown = false;
+	let errorMesseage='';
 	let navigationBar: HTMLDivElement;
 	let NewMatch: HTMLDivElement;
 	let Settings: HTMLDivElement;
@@ -37,5 +38,6 @@
 		</div>
 	</div>
 	<slot></slot>
-	<Modal bind:shown></Modal>
+	<Modal bind:errorMesseage bind:shown></Modal>
+	
 </div>

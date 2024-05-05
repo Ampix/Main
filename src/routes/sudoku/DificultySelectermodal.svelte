@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	export let shown: boolean;
+	export let errorMesseage: string;
 	let modal: HTMLDivElement;
 	let outerModal: HTMLDivElement;
 	onMount(() => {
@@ -8,6 +9,7 @@
 			e.preventDefault();
 			if (e.target === outerModal) {
 				shown = false;
+				errorMesseage = 'Nem választottál semmilyen módot';
 			}
 		});
 	});
