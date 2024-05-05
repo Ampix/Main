@@ -4,7 +4,7 @@
 	import Modal from './DificultySelectermodal.svelte';
 
 	let shown = false;
-	let errorMesseage='';
+	let output = 0;
 	let navigationBar: HTMLDivElement;
 	let NewMatch: HTMLDivElement;
 	let Settings: HTMLDivElement;
@@ -20,7 +20,7 @@
 <div class="">
 	<div class="fixed bottom-0 left-0 flex h-10 w-screen justify-center bg-black">
 		<div
-			class=" group fixed bottom-5 grid h-20 w-screen grid-cols-3 items-center rounded-xl bg-blue-700 transition-all duration-200 hover:bottom-6 hover:h-24"
+			class=" group fixed bottom-5 grid h-20 w-screen grid-cols-3 items-center rounded-xl bg-blue-600 transition-all duration-200 hover:bottom-6 hover:h-24"
 			bind:this={navigationBar}
 		>
 			<div
@@ -38,6 +38,5 @@
 		</div>
 	</div>
 	<slot></slot>
-	<Modal bind:errorMesseage bind:shown></Modal>
-	
+	<Modal bind:output bind:shown></Modal>
 </div>
