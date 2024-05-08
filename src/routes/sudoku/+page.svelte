@@ -14,7 +14,7 @@
 					value: 0,
 					pos: [0, 1],
 					section: [0, 0],
-					posibility: []
+					posibility: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 				}
 			])
 		);
