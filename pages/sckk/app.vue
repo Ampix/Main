@@ -152,6 +152,7 @@ onMounted(() => {
         for (const ember of Object.keys(hívások)) {
             if (cont) {
                 const titel = document.createElement('h1')
+                titel.id = 'man'
                 titel.innerText = `${ember}: ${hívások[ember].a} + ${hívások[ember].b} + ${hívások[ember].c}`
                 cont.appendChild(titel)
             }
