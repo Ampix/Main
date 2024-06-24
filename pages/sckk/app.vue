@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-screen">
         <div class="m-auto">
-            <h2>A C műszak a maradékot jelenti!</h2>
+            <h2>Az N műszak a műszakon kívülit jelenti!</h2>
             <div id="form">
                 <h1 class="text-center">
                     Kérlek rakd be ide az App kódját! (Egyperces számítása még
@@ -37,6 +37,7 @@ onMounted(() => {
             a: number
             b: number
             c: number
+            n: number
         }
     }
 
@@ -65,6 +66,11 @@ onMounted(() => {
             lemondott: 0,
             összesen: 0,
         },
+        n: {
+            egyperces: 0,
+            lemondott: 0,
+            összesen: 0,
+        },
     }
 
     document.querySelector('#app-form')?.addEventListener('submit', (ev) => {
@@ -76,9 +82,10 @@ onMounted(() => {
             .split('\n')
             .forEach((line, index) => {
                 const mama = line.split('\t')
-                const akezdet = new Date(mama[3]).setHours(15, 0, 0, 0)
-                const avege = new Date(mama[3]).setHours(18, 30, 0, 0)
-                const bvege = new Date(mama[3]).setHours(22, 0, 0, 0)
+                const akezdet = new Date(mama[3]).setHours(14, 0, 0, 0)
+                const avege = new Date(mama[3]).setHours(17, 0, 0, 0)
+                const bvege = new Date(mama[3]).setHours(20, 0, 0, 0)
+                const cvege = new Date(mama[3]).setHours(23, 0, 0, 0)
                 if (
                     mama[0] !== 'Lemondott' &&
                     mama[0].length > 1 &&
@@ -89,12 +96,13 @@ onMounted(() => {
                             a: 0,
                             b: 0,
                             c: 0,
+                            n: 0,
                         }
                     }
                     const date = new Date(mama[3])
                     if (akezdet > Number(date)) {
-                        hívások[mama[0]].c++
-                        műszakok.c.összesen++
+                        hívások[mama[0]].n++
+                        műszakok.n.összesen++
                     }
                     if (Number(date) > akezdet && avege > Number(date)) {
                         hívások[mama[0]].a++
@@ -104,15 +112,19 @@ onMounted(() => {
                         hívások[mama[0]].b++
                         műszakok.b.összesen++
                     }
-                    if (Number(date) > bvege) {
+                    if (Number(date) > bvege && cvege > Number(date)) {
                         hívások[mama[0]].c++
                         műszakok.c.összesen++
+                    }
+                    if (Number(date) > cvege) {
+                        hívások[mama[0]].n++
+                        műszakok.n.összesen++
                     }
                 } else {
                     if (mama[0] === 'Lemondott') {
                         const date = new Date(mama[3])
                         if (akezdet > Number(date)) {
-                            műszakok.c.lemondott++
+                            műszakok.n.lemondott++
                         }
                         if (Number(date) > akezdet && avege > Number(date)) {
                             műszakok.a.lemondott++
@@ -120,8 +132,11 @@ onMounted(() => {
                         if (Number(date) > avege && bvege > Number(date)) {
                             műszakok.b.lemondott++
                         }
-                        if (Number(date) > bvege) {
+                        if (Number(date) > bvege && cvege > Number(date)) {
                             műszakok.c.lemondott++
+                        }
+                        if (Number(date) > cvege) {
+                            műszakok.n.lemondott++
                         }
                     }
                 }
