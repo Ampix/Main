@@ -168,7 +168,7 @@ onMounted(() => {
             if (cont) {
                 const titel = document.createElement('h1')
                 titel.id = 'man'
-                titel.innerText = `${ember}: ${hívások[ember].a} + ${hívások[ember].b} + ${hívások[ember].c}`
+                titel.innerText = `${ember}: ${hívások[ember].a} + ${hívások[ember].b} + ${hívások[ember].c} + ${hívások[ember].n}`
                 cont.appendChild(titel)
             }
         }
