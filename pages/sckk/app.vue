@@ -36,7 +36,6 @@ onMounted(() => {
         [key: string]: {
             a: number
             b: number
-            c: number
             n: number
         }
     }
@@ -61,11 +60,6 @@ onMounted(() => {
             lemondott: 0,
             összesen: 0,
         },
-        c: {
-            egyperces: 0,
-            lemondott: 0,
-            összesen: 0,
-        },
         n: {
             egyperces: 0,
             lemondott: 0,
@@ -82,10 +76,9 @@ onMounted(() => {
             .split('\n')
             .forEach((line, index) => {
                 const mama = line.split('\t')
-                const akezdet = new Date(mama[3]).setHours(14, 0, 0, 0)
-                const avege = new Date(mama[3]).setHours(17, 0, 0, 0)
-                const bvege = new Date(mama[3]).setHours(20, 0, 0, 0)
-                const cvege = new Date(mama[3]).setHours(23, 0, 0, 0)
+                const akezdet = new Date(mama[3]).setHours(15, 0, 0, 0)
+                const avege = new Date(mama[3]).setHours(18, 30, 0, 0)
+                const bvege = new Date(mama[3]).setHours(22, 0, 0, 0)
                 if (
                     mama[0] !== 'Lemondott' &&
                     mama[0].length > 1 &&
@@ -95,7 +88,6 @@ onMounted(() => {
                         hívások[mama[0]] = {
                             a: 0,
                             b: 0,
-                            c: 0,
                             n: 0,
                         }
                     }
@@ -112,11 +104,7 @@ onMounted(() => {
                         hívások[mama[0]].b++
                         műszakok.b.összesen++
                     }
-                    if (Number(date) > bvege && cvege > Number(date)) {
-                        hívások[mama[0]].c++
-                        műszakok.c.összesen++
-                    }
-                    if (Number(date) > cvege) {
+                    if (Number(date) > bvege) {
                         hívások[mama[0]].n++
                         műszakok.n.összesen++
                     }
@@ -132,10 +120,7 @@ onMounted(() => {
                         if (Number(date) > avege && bvege > Number(date)) {
                             műszakok.b.lemondott++
                         }
-                        if (Number(date) > bvege && cvege > Number(date)) {
-                            műszakok.c.lemondott++
-                        }
-                        if (Number(date) > cvege) {
+                        if (Number(date) > bvege) {
                             műszakok.n.lemondott++
                         }
                     }
@@ -168,7 +153,7 @@ onMounted(() => {
             if (cont) {
                 const titel = document.createElement('h1')
                 titel.id = 'man'
-                titel.innerText = `${ember}: ${hívások[ember].a} + ${hívások[ember].b} + ${hívások[ember].c} + ${hívások[ember].n}`
+                titel.innerText = `${ember}: ${hívások[ember].a} + ${hívások[ember].b} + ${hívások[ember].n}`
                 cont.appendChild(titel)
             }
         }
